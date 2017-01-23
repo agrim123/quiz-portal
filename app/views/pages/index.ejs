@@ -12,11 +12,21 @@
 </div>
 <div id="form-messages" style="color: red"></div>
 <!-- <a href="#" id="next">Next</a> -->
-<a href="/leaderboard">Leaderboard</a>
+<!-- <a href="/leaderboard">Leaderboard</a> -->
 <a href="/logout">logout</a>
-<div class="leaderboard">
-<div class="name"></div>
-<div class="score"></div>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" id="leaderboard">Leaderboard</button>
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="leaderboard">
+				<div class="name"></div>
+				<div class="score"></div>
+			</div>
+		</div>
+	</div>
 </div>
+
+
 </body>
 </html>

@@ -3,7 +3,8 @@ $('document').ready(function () {
 	if($('.main div').first().hasClass('active')){
 		$("#back").hide();
 	}
-	setInterval(function(){
+	$('#myModal').modal();
+	$("#leaderboard").click(function(){
 		$.ajax({
 			method: 'GET',
 			url: '/leaderboard',
@@ -16,7 +17,7 @@ $('document').ready(function () {
 				$(".leaderboard .score").append(response[i].score);	
 			}
 		});
-	},5000);
+	})
 	$('.submit').on('click',function() {
 		$(this).removeClass('submit');
 		$('#form-messages').html('');
