@@ -4,11 +4,11 @@ dotenv.load();
 var cloudinary = require('cloudinary');
 var multer  = require('multer')
 var upload = multer({ dest: 'uploads/' });
-cloudinary.config({ 
+/*cloudinary.config({ 
 	cloud_name: process.env.CLOUD_NAME, 
 	api_key: process.env.API_KEY, 
 	api_secret: process.env.API_SECRET
-});
+});*/
 var exec = require('child_process').exec;
 exports.home = function(req,res){
 	if(req.session.user){
@@ -22,7 +22,7 @@ exports.home = function(req,res){
 }
 exports.create_post = function(req,res){
 	const results = [];
-	if(req.file){
+/*	if(req.file){
 		cloudinary.uploader.upload(req.file.path, function(result, error) {
 			if (result) {
 				var data = { 
@@ -45,7 +45,7 @@ exports.create_post = function(req,res){
 				console.log(error);
 			}
 		});
-	}else{
+	}else{*/
 		var data = { 
 			statement:req.body.statement,
 			correct_answer:req.body.correct_answer,
@@ -56,5 +56,5 @@ exports.create_post = function(req,res){
 				res.redirect('/admin');
 			}
 		});
-	}
+	/*}*/
 }
