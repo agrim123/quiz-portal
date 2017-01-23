@@ -1,0 +1,22 @@
+<% include ../partials/head %>
+<%- message %>
+<div class="main">
+	<% questions.forEach(function(question) { %>
+	<div id="question" class="question-<%= question.id %>">
+		<input id="id" style="display: none;" value="<%= question.id %>">
+		<%- question.statement %><br />
+		<input id="answer" type="text" name="answer">
+		<button class="submit">Submit</button>
+	</div>
+	<% }); %>
+</div>
+<div id="form-messages" style="color: red"></div>
+<!-- <a href="#" id="next">Next</a> -->
+<a href="/leaderboard">Leaderboard</a>
+<a href="/logout">logout</a>
+<div class="leaderboard">
+<div class="name"></div>
+<div class="score"></div>
+</div>
+</body>
+</html>

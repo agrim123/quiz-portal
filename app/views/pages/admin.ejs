@@ -1,0 +1,67 @@
+<% include ../partials/head %>
+<div class="container-fluid" style="background-color: rgba(128,128,128,0.05)">
+	<div class="row" style="margin-top: 1%;">
+		<div class="col-md-11">
+			<legend>Admin Panel</legend>
+		</div>
+		<div class="col-md-1">
+			<a href="/logout" class="btn btn-info">Logout</a>
+		</div>
+	</div>
+	<div class="row" style="margin-top: 20px;">
+		<div class="col-md-offset-1 col-md-6">
+			<form class="form-horizontal" action="/admin" method="post" id="post_form" enctype="multipart/form-data">
+				<legend>Upload your article</legend>
+				<div class="form-group col-md-12">
+					<textarea id="editor" class="form-control" rows="3" placeholder="Paste your article here..." name="statement">
+					</textarea>
+				</div>
+				<div class="form-group col-md-6">
+					<div class="col-sm-12">
+						<input type="text" class="form-control" id="inputEmail3" placeholder="Correct Answer" name="correct_answer">
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<input type="file" name="image" accept="image/*">
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12">
+						<center><button type="submit" class="btn btn-default" style="position:relative;margin-right: 50px;">Upload</button></center>
+					</div>
+				</div>
+				<!-- <div class="form-group col-md-12" style="margin-left: 0px;width: 91.3%">
+					<textarea class="form-control" rows="3" placeholder="Paste your article here..." name="content"></textarea>
+				</div> -->
+				<% if(message){%>
+				<%= message %>
+				<%}%>
+			</form>
+		</div>
+	</div>	
+ <h3>All Questions</h3>
+	<table id="myTable" class="table table-striped table-bordered" style="table-layout: fixed;word-wrap: break-word;">
+		<thead>
+			<tr>
+				<td class="center-align">Id</td>
+				<td class="center-align">Statement</td>
+				<td class="center-align">Correct Answer</td>
+			</tr>
+		</thead>
+		<% questions.forEach(function(question) { %>
+		<tr>
+			<td><%= question.id %></td>
+			<td><%- question.statement %></td>
+			<td><%= question.correct_answer %></td>
+		</tr>
+		<% }); %> 
+		<tbody>
+		</tbody>
+	</table>
+</div>
+<script type="text/javascript" src="https://cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+<script type="text/javascript" src="/js/sample.js"></script>
+<script>
+	initSample();
+</script>
+</body>
+</html>

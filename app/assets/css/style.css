@@ -1,0 +1,561 @@
+/****** Overall CSS ****/
+.main-margin{
+  margin-left: 120px;margin-right: 120px
+}
+.absolute-position{
+  position: absolute;
+}
+.uppercase{
+  text-transform: uppercase;
+}
+.heading_articles{
+  padding: 2% 0%;
+}
+.article_heading{
+  margin-top: 10px;
+}
+.article_author, .article_category{
+  color: #A9A9A9  ;
+  font-size: 11.5px;
+  font-weight: 600;
+}
+.paragraph_articles{
+  padding: 2% 0%;
+}
+.paragraph_articles p{
+  padding: 0% 5%;
+}
+.gen_heading{
+  font-family: "Lato Medium";
+}
+::-webkit-input-placeholder { /* Chrome */
+  font-size: 15px;
+  font-family: "Lato Thin";
+}
+:-ms-input-placeholder { /* IE 10+ */
+  font-size: 15px;
+  font-family: "Lato Thin";
+}
+::-moz-placeholder { /* Firefox 19+ */
+  font-size: 15px;
+  font-family: "Lato Thin";
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+ font-family: "Lato Thin";
+ font-size: 15px;
+}
+footer{
+  margin-top: 60px;
+}
+footer>div>div>div.col-md-3 div{
+  font-size: 17px;
+  font-family: "LinLibertine_R Regular";
+}
+footer>div>div>div.col-md-6 p{
+  font-size: 20px;
+  font-family: "LinLibertine_R Regular";
+}
+footer>div>div>div:nth-child(3){
+  padding: 0!important;
+}
+ body{
+  overflow-x: hidden;
+ }
+
+ @font-face {
+  font-family: 'Lato Regular';
+  src: url('font/Lato-Regular.ttf');
+  src:url('font/Lato-Regular.ttf') format('truetype'),
+ }
+ @font-face {
+  font-family: 'Lato Medium';
+  src: url('font/Lato-Medium.ttf');
+  src:url('font/Lato-Medium.ttf') format('truetype'),
+ }
+ @font-face {
+  font-family: 'Lato Thin';
+  src: url('font/Lato-Thin.ttf');
+  src:url('font/Lato-Thin.ttf') format('truetype'),
+ }
+ @font-face {
+  font-family: 'LinLibertine_R';
+  src: url(' font/LinLibertine_R.ttf');
+  src:url(' font/LinLibertine_R.ttf') format('truetype'),
+ }
+ @font-face {
+  font-family: 'Lato Light';
+  src: url(' font/Lato-Light.ttf');
+  src:url(' font/Lato-Light.ttf') format('truetype'),
+ }
+
+ a {
+  color:black;
+ }
+ .main-nav{
+  font-family:"Lato Regular";
+  text-transform: uppercase;
+  text-align: center;
+  /*height: 70px;*/
+  font-size: 18px;
+  color: #212121;
+  margin-bottom: 40px;
+ }
+ nav ul li {
+
+ }
+
+/*************************************************************************************************
+           HEADER-CSS
+*****************************************************************************************************/
+
+#head{
+    position: relative;
+    width:100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.header_container{
+  padding: 2% 3%;
+  margin: 0%;
+  margin-right: 0%;
+}
+
+.kshitij_logo_top {
+    display: block;
+    margin: 0 auto;
+}
+/** navbar ************************************************************************/
+ .header.navbar-default{
+  background-color: transparent;
+  border: none;
+
+}
+.header.navbar-default > div > ul a{
+  color: white;
+}
+.header.navbar-default ul.navbar-nav{
+  font-size: 16.5px;
+}
+ .header.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color: white;
+    background-color: transparent;
+}
+.header .navbar-nav>li {
+    float: left;
+    width: 16.66%;
+}
+.header .navbar-nav>li>a {
+  font-size: 1.1em;
+  text-align: center;
+}
+.header_container div.container{
+  padding: 0% !important;
+  width: 100%;
+}
+.header_container .row .col-sm-6 {
+    padding: 0!important;
+}
+.header .container-fluid .navbar-nav {
+    width: 100%;
+}
+.header .container-fluid {
+  padding: 0;
+}
+/**************************************************************************************/
+.header_heading{
+  font-size: 2.15em;
+  letter-spacing: .13em;
+  line-height: 1.5em;
+  font-family:"Lato Regular";
+  text-align: center;
+  color: white;
+}
+
+.carousel-content {
+    color:white;
+    display:flex;
+    align-items:center;
+    text-align: justify;
+}
+.header_container .carousel-inner p{
+  font-size: 15px;
+  font-family: "LinLibertine_R Regular";
+  text-align: center;
+}
+
+#text-carousel {
+  width: 100%;
+ }
+ .carousel-control.left, .carousel-control.right {
+   background-image:none !important;
+   filter:none !important;
+   
+}
+.right-carousel{
+  right: -55%!important;
+  
+}
+.right-carousel, .left-carousel{
+  position: relative;
+  left: 45%;
+  top: 10%;
+}
+.left-carousel .glyphicon-chevron-left, .right-carousel .glyphicon-chevron-right, .right-carousel .icon-next, .left-carousel .icon-prev {
+
+    font-size: 16px;
+}
+.main_event_div{
+  text-align: center;
+  color: black;
+
+}
+.main_event_div button{
+  border-radius: 30px;
+  font-size: 11px;
+  font-family: "Lato Light";
+  background: white;
+  color: #000000;
+  margin-bottom: 16px;
+  margin-top: -16px;
+}
+.header-main_button{
+  display: block;
+  margin: auto;
+  padding: 4% 2% 4% 2% !important;
+}
+.carousel-content p{
+  margin: 10% 0% !important;
+}
+/*********************************************************************************/
+ .header-list{
+  background-color: #f9f9f9;
+ }
+ .header-list a:hover{
+  color: black;
+  background-color: white !important;
+ }
+ .center-align{
+  text-align: center;
+ }
+ .font30{
+  font-size: 30px;
+  font-family: Lato Medium;
+ }
+/*.content{
+  display: none;
+
+}*/
+
+
+.main-nav.affix{
+    position:fixed;
+    top:0;
+    z-index: 2;
+    right: 0;
+    left: 0;
+}
+  card{
+    margin-top:30px;
+  }
+.card-author{
+  color: #a1a1a1;
+  font-family: "LinLibertine_R Regular";
+}
+.card-heading{
+  font-family: "LinLibertine_R Regular"
+}
+.card-category{
+  color: #a1a1a1;
+  text-transform: uppercase;
+  font-family: "Lato Regular";
+}
+
+  .carouse-control{
+    &.left, &.right{
+      background-image: none;
+    }
+  }
+}
+/*********************************************************************************************************
+                              MORE ARTICLES CAROUSEL CSS
+*********************************************************************************************************/
+@media all and (min-width: 992px) {
+  .carousel-showmanymoveone .carousel-inner > .active.left,
+  .carousel-showmanymoveone .carousel-inner > .prev {
+    left: -33%;
+  }
+  .carousel-showmanymoveone .carousel-inner > .active.right,
+  .carousel-showmanymoveone .carousel-inner > .next {
+    left: 33%;
+  }
+  .carousel-showmanymoveone .carousel-inner > .left,
+  .carousel-showmanymoveone .carousel-inner > .prev.right,
+  .carousel-showmanymoveone .carousel-inner > .active {
+    left: 0;
+  }
+  .carousel-showmanymoveone .carousel-inner .cloneditem-2,
+  .carousel-showmanymoveone .carousel-inner .cloneditem-3 {
+    display: block;
+  }
+}
+@media all and (min-width: 992px) and (transform-3d), all and (min-width: 992px) and (-webkit-transform-3d) {
+  .carousel-showmanymoveone .carousel-inner > .item.active.right,
+  .carousel-showmanymoveone .carousel-inner > .item.next {
+    -webkit-transform: translate3d(33%, 0, 0);
+            transform: translate3d(33%, 0, 0);
+    left: 0;
+  }
+  .carousel-showmanymoveone .carousel-inner > .item.active.left,
+  .carousel-showmanymoveone .carousel-inner > .item.prev {
+    -webkit-transform: translate3d(-33%, 0, 0);
+            transform: translate3d(-33%, 0, 0);
+    left: 0;
+  }
+  .carousel-showmanymoveone .carousel-inner > .item.left,
+  .carousel-showmanymoveone .carousel-inner > .item.prev.right,
+  .carousel-showmanymoveone .carousel-inner > .item.active {
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+    left: 0;
+  }
+}
+/*************************************************************************************************************/
+/******* magazine css ******/
+
+.read-issue-btn{
+      background-color: white;
+    border: 1px solid black;
+    border-radius: 25px;
+}
+.magazine-heading{
+  font-size: 25px;
+  font-family:"Lato Regular";
+}
+/*************************************************************************************************************/
+/***********events_kshittij css ******/
+
+.event-name-button1{
+    background-color: white;
+    border: 1px solid #d8d5d5;
+    border-top-left-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-right: -4px;
+    border-right: none;
+    color: #d8d5d5;
+}
+.event-name-button2{
+    background-color: white;
+    border: 1px solid #d8d5d5;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left: none;
+    color: #d8d5d5;
+}
+.event-name-button-active{
+  background: #d8d5d5;
+  color:#000000;
+}
+.content{
+  font-family: "Lato Medium";
+}
+@media screen and (max-width: 672px){
+  .main-margin{
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
+/***********************************************************************************/
+/**************************FOOTER CSS*********************************************/
+footer{
+  background-color: #f9f9f9;
+  min-height: 200px;
+      padding-top: 9px;
+      padding-bottom: 45px;
+      margin-top: 90px !important;
+}
+footer .container{
+  min-height: 60px;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+ul.social-network {
+    list-style: none;
+    display: inline;
+    margin-left: 0 !important;
+    padding: 0;
+}
+
+ul.social-network li {
+    display: inline;
+    margin: 0 5px;
+}
+.social-network a.icoFacebook:hover {
+    background-color:#3B5998;
+}
+.social-network a.icoTwitter:hover {
+    background-color:#33ccff;
+}
+.social-network a.icoGoogle:hover {
+    background-color:#BD3518;
+}
+.social-network a.icoLocation:hover {
+    background-color:#BD3518;
+}
+a.socialIcon:hover, .socialHoverClass {
+    color:#44BCDD;
+}
+.social-circle li a {
+    color: #333;
+    background-color: #f9f9f9;
+    display:inline-block;
+    position:relative;
+    margin:0 auto 0 auto;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    border-radius:50%;
+    border: solid 1px #333;
+    text-align:center;
+    width: 30px;
+    height: 30px;
+    font-size:16px;
+}
+.social-circle li a:hover{
+  color: white;
+  border: none;
+}
+.social-circle li i {
+    margin:0;
+    line-height:30px;
+    text-align: center;
+}
+
+.contact_us input {
+  width: 100%;
+  padding: 7px;
+  box-sizing: border-box;
+  background: none;
+  outline: none;
+  resize: none;
+  border: 0;
+  transition: all .3s;
+  border-bottom: 1px solid #bebed2
+}
+
+.contact_us input:focus {
+  border-bottom: 1px solid #78788c
+}
+
+.contact_us button {
+  font-size: .8em;
+  margin-top: 20px!important;
+  display: block;
+  float: center;
+  padding: 2% 4% 2% 4% !important;
+  margin: auto;
+  border: 1px solid #78788c;
+  border-radius: 30px;
+  background: 0;
+  color: #5a5a6e;
+  cursor: pointer;
+  transition: all .3s
+}
+
+.contact_us button:hover {
+  background: #78788c;
+  color: #fff
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  line
+  font-style: Lato Thin;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  line
+  font-style: Lato Thin;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  line
+  font-style: Lato Thin;
+}
+:-moz-placeholder { /* Firefox 18- */
+  line
+  font-style: Lato Thin;
+}
+
+
+
+/*****************************************************************************/
+                     Nanotales_carousel
+/******************************************************************************/
+/* carousel */
+#quote-carousel 
+{
+  padding: 0 10px 30px 10px;
+  margin-top: 30px 0px 0px;
+}
+
+/* Control buttons  */
+#quote-carousel .carousel-control
+{
+  background: none;
+  color: #222;
+  font-size: 2.3em;
+  text-shadow: none;
+  margin-top: 30px;
+}
+/* Previous button  */
+#quote-carousel .carousel-control.left 
+{
+  left: -12px;
+}
+/* Next button  */
+#quote-carousel .carousel-control.right 
+{
+  right: -12px !important;
+}
+.item blockquote {
+    border-left: none; 
+    margin: 0;
+}
+
+.item blockquote img {
+    margin-bottom: 10px;
+}
+
+.item blockquote p:before {
+    content: "\f10d";
+    font-family: 'Fontawesome';
+    float: left;
+    margin-right: 10px;
+}
+
+@media (min-width: 768px) { 
+    #quote-carousel 
+    {
+      margin-bottom: 0;
+      padding: 0 40px 30px 40px;
+      margin-top: 30px;
+    }
+    
+}
+/********************************************************************************/
+
+/********admin panel**************/
+.login_form{
+  position: relative;
+}
+.center-align{
+  text-align: center;
+}
+  .main div{
+    display: none;
+  }
+
+  .main .active{
+    display: block;
+  }
