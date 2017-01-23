@@ -3,6 +3,13 @@ $('document').ready(function () {
 	if($('.main div').first().hasClass('active')){
 		$("#back").hide();
 	}
+	/*setInterval(function(){
+		var data = {
+			question_id: $('.active #id').val(),
+			answer: 'null'
+		}
+		check_answer(data);
+	},2000);*/
 	$('#myModal').modal();
 	$("#leaderboard").click(function(){
 		$.ajax({
@@ -37,11 +44,16 @@ function check_answer(data){
 	})
 	.done(function(response) {
 		if(response === "200"){
-			var activeelement = $('.active');
-			if(activeelement.next().length)
-				activeelement.removeClass('active').next().addClass('active');
-			else
-				activeelement.removeClass('active').closest('.main').find('> div:last').addClass('active');
+			var activeElement = $('.active');
+			if(activeElement.next().length){
+				activeElement.removeClass('active').next().addClass('active');
+			}
+			else{
+				if($(".main > div:last").hasClass('active')){
+					window.location.reload();
+				}
+				activeElement.removeClass('active').closest('.main').find('> div:last').addClass('active');
+			}
 		}else if(response === "201"){
 			$('#form-messages').html('').append("Already Submitted");
 			window.location.reload();
@@ -51,5 +63,5 @@ function check_answer(data){
 			$('#form-messages').html('').append("Unknown Error please refresh to continue..");
 		}
 	});
-	return;
+	
 }

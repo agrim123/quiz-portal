@@ -3,7 +3,7 @@ var user_helper = require('../helpers/users_helper');
 var database = require('../models/database');
 exports.signup = function(req,res){
 	if(req.session.user){
-		res.redirect('/admin');
+		res.redirect('/');
 	}else{
 		res.render('pages/signup', { title: 'Kshitij'});
 	}
