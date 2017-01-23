@@ -22,7 +22,7 @@ exports.home = function(req,res){
 }
 exports.create_post = function(req,res){
 	const results = [];
-	if(req.file){
+	/*if(req.file){
 		cloudinary.uploader.upload(req.file.path, function(result, error) {
 			if (result) {
 				var data = { 
@@ -45,16 +45,15 @@ exports.create_post = function(req,res){
 				console.log(error);
 			}
 		});
-	}else{
+	}else{*/
 		var data = { 
 			statement:req.body.statement,
 			correct_answer:req.body.correct_answer,
 			published_on:new Date
 		};
-		database.insert('INSERT INTO question(statement, correct_answer,published_on) VALUES(${statement}, ${correct_answer},${published_on})', data,function(status){
-			if(status){
-				res.redirect('/admin');
-			}
-		});
-	}
+		database.insert('INSERT INTO question(statement, correct_answer,published_on) VALUES(${statement}, ${correct_answer},${published_on})', data);
+		
+		res.redirect('/admin');
+		
+	/*}*/
 }
