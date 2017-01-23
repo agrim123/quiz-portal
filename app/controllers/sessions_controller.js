@@ -10,7 +10,7 @@ exports.signup = function(req,res){
 }
 exports.login = function(req,res){
 	if(req.session.user){
-		res.redirect('/admin');
+		res.redirect('/');
 	}else{
 		res.render('pages/login',{title:'Kshitij',msg:""});
 	}
