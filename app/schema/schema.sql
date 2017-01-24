@@ -3,7 +3,8 @@ CREATE TABLE question(
 	statement VARCHAR(500) NOT NULL,
 	correct_answer varchar(50) not null,
 	image_url varchar(100),
-	published_on timestamp default current_timestamp
+	published_on timestamp default current_timestamp,
+	question_number INT
 );
 CREATE TABLE "session" (
   "sid" varchar NOT NULL COLLATE "default",

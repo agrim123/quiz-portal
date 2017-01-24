@@ -15,10 +15,10 @@ exports.home = function(req,res){
 				var query = 'SELECT * from question left join map_users on question.id = map_users.question_id except select * from question right join map_users on question.id = map_users.question_id';
 				database.select(query,true,function(results){
 					if(results.length >0){
-					res.render('pages/index',{questions: results,message: ''});
-				}else{
-					res.render('pages/index',{message: "<div class='banner'>You have completed the quiz! Please wait for quiz to complete and follow leaderboard</div>",questions:[]});
-				}
+						res.render('pages/index',{questions: results,message: ''});
+					}else{
+						res.render('pages/index',{message: "<div class='banner'>You have completed the quiz! Please wait for quiz to complete and follow leaderboard</div>",questions:[]});
+					}
 				});
 			}else{
 				var query = 'select id,statement from question';
@@ -33,7 +33,7 @@ exports.home = function(req,res){
 }
 exports.check = function(req,res){
 	if(req.session.user){
-		if(req.body.answer != '' && req.body.answer != null && req.body.answer != undefined && req.body.answer.indexOf("'") < 0){
+		if(req.body.answer != '' && req.body.answer != null && req.body.answer != undefined){
 			var user_id = req.session.user;
 			var question_id = req.body.question_id;
 			var query = 'select * from map_users where user_id=${user_id} and question_id=${question_id}';
@@ -56,6 +56,9 @@ exports.check = function(req,res){
 					res.end("200");
 				}
 			});
+		}else if(req.body.answer.indexOf("'") < 0){
+			res.writeHead(200, {'Content-Type': 'text/html'});
+					res.end("203");
 		}else{
 			res.writeHead(200, {'Content-Type': 'text/html'});
 			res.end("202");

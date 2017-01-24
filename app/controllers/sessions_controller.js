@@ -5,7 +5,7 @@ exports.signup = function(req,res){
 	if(req.session.user){
 		res.redirect('/admin');
 	}else{
-		res.render('pages/signup', { title: 'Kshitij'});
+		res.render('pages/signup', { title: 'Quiz'});
 	}
 }
 exports.login = function(req,res){
@@ -31,7 +31,7 @@ exports.login_user = function(req,res){
 					res.end();
 				});
 			}else{
-				res.render('pages/login',{msg: "You are not in kshitij family!!"});
+				res.render('pages/login',{msg: "no no"});
 			}
 		}
 	});
