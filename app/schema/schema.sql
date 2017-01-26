@@ -4,7 +4,11 @@ CREATE TABLE question(
 	correct_answer varchar(50) not null,
 	image_url varchar(100),
 	published_on timestamp default current_timestamp,
-	question_number INT
+	question_number INT,
+	option_a VARCHAR(100),
+	option_b VARCHAR(100),
+	option_c VARCHAR(100),
+	option_d VARCHAR(100)
 );
 CREATE TABLE "session" (
   "sid" varchar NOT NULL COLLATE "default",

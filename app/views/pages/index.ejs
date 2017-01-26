@@ -28,14 +28,20 @@
 				<h2 class="question_number"></h2>
 			</div>
 			<div class="col-md-10 col-md-offset-1 border">
-			<div class="center-align">
-			<!-- <img id="question_loader" src="/images/ajax-loader.gif" style="display: none;"> -->
-			</div>
+				<div class="center-align">
+					<!-- <img id="question_loader" src="/images/ajax-loader.gif" style="display: none;"> -->
+				</div>
 				<div style="text-align: center;"><%- question.statement %></div>
 				<form class="form-inline form">
-					<div class="form-group" style="width: 100%">
+					<!-- <div class="form-group" style="width: 100%">
 						<label class="sr-only" for="answer">Enter Answer</label>
 						<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
+					</div> -->
+					<div class="form-group">
+						<input type="radio" name="answer" value="<%- question.option_a %>" checked> <%- question.option_a %><br>
+						<input type="radio" name="answer" value="<%- question.option_b %>"> <%- question.option_b %><br>
+						<input type="radio" name="answer" value="<%- question.option_c %>"> <%- question.option_c %>  <br>
+						<input type="radio" name="answer" value="<%- question.option_d %>"> <%- question.option_d %>  <br>
 					</div>
 					<div id="form-messages" style="color: red"></div>
 				</form>

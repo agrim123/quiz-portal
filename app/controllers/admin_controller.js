@@ -50,10 +50,14 @@ exports.create_post = function(req,res){
 		var data = { 
 			statement:req.body.statement,
 			correct_answer:req.body.correct_answer,
-			published_on:new Date
+			published_on:new Date,
+			option_a:req.body.option_a,
+			option_b:req.body.option_b,
+			option_c:req.body.option_c,
+			option_d:req.body.option_d
 		};
 
-		database.insert('INSERT INTO question(statement, correct_answer,published_on) VALUES(${statement}, ${correct_answer},${published_on})', data);
+		database.insert('INSERT INTO question(statement, correct_answer,published_on,option_a,option_b,option_c,option_d) VALUES(${statement}, ${correct_answer},${published_on},${option_a},${option_b},${option_c},${option_d})', data);
 		
 		res.redirect('/admin');
 		

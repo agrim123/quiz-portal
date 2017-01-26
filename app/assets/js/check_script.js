@@ -37,7 +37,7 @@ $('document').ready(function () {
 		$('#form-messages').html('');
 		var data = {
 			question_id: $('.active #id').val(),
-			answer: $(".active #answer").val()
+			answer: document.querySelector('input[name="answer"]:checked').value
 		}
 		/*console.log(data);*/
 		if(!data.answer){

@@ -21,7 +21,7 @@ exports.home = function(req,res){
 					}
 				});
 			}else{
-				var query = 'select id,statement from question';
+				var query = 'select id,statement,option_a,option_b,option_c,option_d from question';
 				database.select(query,true,function(results){
 					res.render('pages/index',{questions: results,message: ''});
 				});
