@@ -1,8 +1,8 @@
 $('document').ready(function () {
 	$.ytLoad();
-	$('.submit').click(function(){
+	/*$('.submit').click(function(){
 		$('#ajaxContent').load('ajax.html');
-	});
+	});*/
 	$(window).load(function(){
 		$("#loader").fadeOut("slow");
 	});
@@ -31,7 +31,8 @@ $('document').ready(function () {
 				$(".leaderboard .score").append(response[i].score);	
 			}
 		});
-	})
+	});
+	var brain_data = new Array();
 	$('.submit').on('click',function() {
 		$(this).removeClass('submit');
 		$('#form-messages').html('');
@@ -39,13 +40,30 @@ $('document').ready(function () {
 			question_id: $('.active #id').val(),
 			answer: document.querySelector('input[name="answer"]:checked').value
 		}
-		/*console.log(data);*/
-		if(!data.answer){
+		brain_data.push(data);
+		var activeElement = $('.active');
+		if(activeElement.next().length){
+			activeElement.removeClass('active').next().addClass('active');
+			$(".question_number").html('');
+			$(".question_number").html('Question ');
+		}
+		else{
+			if($(".main > question:last").hasClass('active')){
+				check_answer(brain_data);
+				window.location.reload();
+			}
+			activeElement.removeClass('active').closest('.main').find('> question:last').addClass('active');
+		}
+		window.onbeforeunload = function() {
+			check_answer(brain_data);
+			window.location = '/';
+		}
+		/*if(!data.answer){
 			$('#form-messages').html('');
 			$('#form-messages').append("Empty answer not accepted");
 		}else{
 			check_answer(data);
-		}
+		}*/
 	});
 });
 function check_answer(data){
@@ -62,29 +80,7 @@ function check_answer(data){
 		}*/
 	})
 	.done(function(response) {
-		if(response === "200"){
-			var activeElement = $('.active');
-			if(activeElement.next().length){
-				activeElement.removeClass('active').next().addClass('active');
-				$(".question_number").html('');
-				$(".question_number").html('Question ');
-			}
-			else{
-				if($(".main > question:last").hasClass('active')){
-					window.location.reload();
-				}
-				activeElement.removeClass('active').closest('.main').find('> question:last').addClass('active');
-			}
-		}else if(response === "201"){
-			$('#form-messages').html('').append("Already Submitted");
-			window.location.reload();
-		}else if(response === "202"){
-			$('#form-messages').html('').append("Empty answer not accepted");
-		}else if(response === "203"){
-			$('#form-messages').html('').append("Please donot include special character in answer.");
-		}else{
-			$('#form-messages').html('').append("Unknown Error please refresh to continue..");
-		}
+		console.log(response);
 	});
 	
 }

@@ -11,7 +11,7 @@ CREATE TABLE question(
 	option_d VARCHAR(100)
 );
 CREATE TABLE "session" (
-  "sid" varchar NOT NULL COLLATE "default",
+	"sid" varchar NOT NULL COLLATE "default",
 	"sess" json NOT NULL,
 	"expire" timestamp(6) NOT NULL
 )
@@ -25,3 +25,24 @@ CREATE TABLE map_users(
 	FOREIGN KEY (user_id) REFERENCES users(id),
 	FOREIGN KEY (question_id) REFERENCES question(id)
 );
+CREATE TABLE solved_quiz(
+	user_id INT UNIQUE,
+	solved boolean default FALSE,
+	FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+
+DECLARE @LoopCounter INT , @MaxEmployeeId INT, 
+        @EmployeeName NVARCHAR(100)
+SELECT @LoopCounter = min(id) , @MaxEmployeeId = max(Id) 
+FROM #Employee
+ 
+WHILE ( @LoopCounter IS NOT NULL
+        AND  @LoopCounter <= @MaxEmployeeId)
+BEGIN
+   SELECT @EmployeeName = Name FROM #Employee 
+   WHERE Id = @LoopCounter
+   PRINT @EmployeeName  
+   SELECT @LoopCounter  = min(id) FROM #Employee
+   WHERE Id > @LoopCounter
+END
