@@ -1,8 +1,8 @@
 <% include ../partials/head %>
 <div class="navbar navbar-default">
 	<div class="container">
-		<a href="https://cognizance.org.in/" class="navbar-brand"> COGNIZANCE |</a>
-		<a href="#" class="navbar-brand"> TEL-E-TEL </a>
+		<a href="https://cognizance.org.in/" class="navbar-brand"> Sangram |</a>
+		<a href="#" class="navbar-brand"> </a>
 		<p class="h4 text4"> SPORTS QUIZ 
 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 				<span class="icon-bar"></span>
@@ -12,7 +12,7 @@
 			</button>
 			<div class = "collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="active text5"><a href="/logout"> QUIT QUIZ </a></li>
+					<li class="text5"><a href="/logout"> QUIT QUIZ </a></li>
 				</ul>
 			</p>
 		</div>
@@ -56,21 +56,10 @@
 </div>
 <div class="navbar navbar-fixed-bottom">
 	<div class="container">
-		<p class="navbar-text pull-left text2">Score: 22</p>
-		<div class="bt">
-			<button type="button" class="navbar-btn btn-primary btn pull-right button" data-toggle="modal" data-target=".bs-example-modal-lg" id="leaderboard">Leaderboard</button>
+		<div class="bt"><a href="leaderboard">
+			<button type="button" class="navbar-btn btn-primary btn pull-right button" id="leaderboard">Leaderboard</button></a>
 		</div>
 	</div>
 </div> 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<div class="leaderboard">
-				<div class="name"></div>
-				<div class="score"></div>
-			</div>
-		</div>
-	</div>
-</div>
 </body>
 </html>

@@ -18,7 +18,7 @@ $('document').ready(function () {
 		check_answer(data);
 	},2000);*/
 	$('#myModal').modal();
-	$("#leaderboard").click(function(){
+	/*$("#leaderboard").click(function(){
 		$.ajax({
 			method: 'GET',
 			url: '/leaderboard',
@@ -31,7 +31,7 @@ $('document').ready(function () {
 				$(".leaderboard .score").append(response[i].score);	
 			}
 		});
-	});
+	});*/
 	var brain_data = new Array();
 	$('.submit').on('click',function() {
 		$(this).removeClass('submit');
@@ -54,10 +54,6 @@ $('document').ready(function () {
 			}
 			activeElement.removeClass('active').closest('.main').find('> question:last').addClass('active');
 		}
-		window.onbeforeunload = function() {
-			check_answer(brain_data);
-			window.location = '/';
-		}
 		/*if(!data.answer){
 			$('#form-messages').html('');
 			$('#form-messages').append("Empty answer not accepted");
@@ -65,12 +61,19 @@ $('document').ready(function () {
 			check_answer(data);
 		}*/
 	});
+	window.onbeforeunload = function() {
+		if(brain_data){
+			check_answer(brain_data);
+			return 'are you sure you want to leave?';
+		}
+	}
 });
 function check_answer(data){
-	$.ajax({
-		method: 'POST',
-		url: '/check',
-		data: JSON.stringify(data),
+	if(data){
+		$.ajax({
+			method: 'POST',
+			url: '/check',
+			data: JSON.stringify(data),
 		contentType: 'application/json'/*,
 		beforeSend: function() {
 			$("#question_loader").css("display","block");
@@ -79,8 +82,10 @@ function check_answer(data){
 			$("#question_loader").css("display","none");
 		}*/
 	})
-	.done(function(response) {
-		console.log(response);
-	});
-	
+		.done(function(){
+			//window.location.reload();
+		});
+	}else{
+		alert('attempt atleast one ques!!');
+	}
 }
