@@ -65,9 +65,9 @@ $('document').ready(function () {
 			check_answer(data);
 		}*/
 	});
-	window.onbeforeunload = function() {
+	/*window.onbeforeunload = function() {
 		check_answer(brain_data);
-	}
+	}*/
 });
 function check_answer(data){
 	if(data){

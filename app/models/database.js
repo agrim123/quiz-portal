@@ -31,6 +31,16 @@ exports.insert = function(query,data){
 		console.log('ERROR:', error)
 	})
 }
+exports.insertReturnOne = function(query,data,callback){
+
+	db.one(query,data)
+	.then(function (data) {
+		callback(data.email);
+	})
+	.catch(function (error) {
+		console.log('ERROR:', error)
+	})
+}
 exports.update = function(query,data){
 	db.none(query,data)
 	.then(function () {

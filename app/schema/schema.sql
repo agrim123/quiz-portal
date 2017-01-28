@@ -17,7 +17,17 @@ CREATE TABLE "session" (
 )
 WITH (OIDS=FALSE);
 ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
-CREATE TABLE users(	id SERIAL PRIMARY KEY,	username VARCHAR(100) NOT NULL,	password varchar(80) not null,created_on timestamp default current_timestamp,score INT default 0);
+CREATE TABLE users(	
+	id SERIAL PRIMARY KEY,
+	oauth_provider varchar(50),
+	first_name varchar(50),
+	last_name varchar(50),
+	email varchar(100),
+	gender varchar(5),
+	picture varchar(255),
+	score INT default 0,
+	created_on timestamp default current_timestamp
+ );
 CREATE TABLE map_users(	
 	user_id INT,
 	question_id INT,

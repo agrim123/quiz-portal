@@ -2,22 +2,29 @@ var database = require('../models/database');
 var fs = require("fs");
 var posts= {};
 exports.home = function(req,res){
+	/*if(req.session.user){
+		res.redirect('/quiz');
+	}else{*/
+		res.render('pages/home');
+	/*}*/
+}
+exports.quiz = function(req,res){
 	if(req.session.user){
 		var user_id = req.session.user;
 		var query = 'select solved from solved_quiz where user_id=${user_id}';
 		var data = {user_id:user_id};
 		database.select(query,data,function(results){
 			if(results.length > 0){
-				res.render('pages/index',{questions: [],message: 'You have completed the quiz'});
+				res.render('pages/quiz',{questions: [],message: 'You have completed the quiz'});
 			}else{
 				var query = 'select id,statement,option_a,option_b,option_c,option_d from question';
 				database.select(query,true,function(results){
-					res.render('pages/index',{questions: results,message: ''});
+					res.render('pages/quiz',{questions: results,message: ''});
 				});
 			}
 		});
 	}else{
-		res.redirect('/login');
+		res.redirect('/');
 	}
 }
 exports.check = function(req,res){
@@ -74,7 +81,7 @@ exports.check = function(req,res){
 	}
 }
 exports.leaderboard = function(req,res){
-	var query = 'select score,username from users order by score';
+	var query = 'select score,first_name,last_name from users order by score';
 	database.select(query,true,function(results){
 		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify(results));
