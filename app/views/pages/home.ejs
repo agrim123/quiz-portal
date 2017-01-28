@@ -60,7 +60,7 @@ function getFbUserData(){
     });
 }
 function saveUserData(userData){
-    $.post('/login', {oauth_provider:'facebook',userData: JSON.stringify(userData)}, function(data){ window.location = '/quiz' });
+    $.post('/login', {oauth_provider:'facebook',userData: JSON.stringify(userData)}, function(data){ /*window.location = '/quiz'*/ });
 }
 // Logout from facebook
 function fbLogout() {

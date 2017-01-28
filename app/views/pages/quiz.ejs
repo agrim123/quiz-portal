@@ -12,11 +12,21 @@
 			</button>
 			<div class = "collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li class="text5"><a href="/logout"> QUIT QUIZ </a></li>
+					<li class="text5">
+						<a href="/leaderboard">
+							<button type="button" class="btn-primary btn" id="leaderboard">Leaderboard</button>
+						</a>
+					</li>
+					<li class="text5">
+						<a href="/logout">
+							QUIT QUIZ 
+						</a>
+					</li>
 				</ul>
-			</p>
-		</div>
+			</div>
+		</p>
 	</div>
+</div>
 </div>
 <div class="container">
 	<%- message %>
@@ -32,17 +42,32 @@
 					<!-- <img id="question_loader" src="/images/ajax-loader.gif" style="display: none;"> -->
 				</div>
 				<div style="text-align: center;"><%- question.statement %></div>
+				<% if(question.image_url){ %>
+
+				<div style="text-align: center;"><img src="<%= question.image_url %>" width="100%"></div>
+				<% } %>
 				<form class="form-inline form">
 					<!-- <div class="form-group" style="width: 100%">
 						<label class="sr-only" for="answer">Enter Answer</label>
 						<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
 					</div> -->
-					<div class="form-group">
-						<input type="radio" name="answer" value="<%- question.option_a %>" checked> <%- question.option_a %><br>
-						<input type="radio" name="answer" value="<%- question.option_b %>"> <%- question.option_b %><br>
-						<input type="radio" name="answer" value="<%- question.option_c %>"> <%- question.option_c %>  <br>
-						<input type="radio" name="answer" value="<%- question.option_d %>"> <%- question.option_d %>  <br>
+					<div class="row" style="text-align: center;">
+						<div class="col-md-6">
+							<input type="radio" name="answer" value="<%- question.option_a %>" checked> <%- question.option_a %>
+						</div>
+						<div class="col-md-6">
+							<input type="radio" name="answer" value="<%- question.option_b %>"> <%- question.option_b %>
+						</div>
 					</div>
+					<div class="row" style="text-align: center;">
+						<div class="col-md-6">
+							<input type="radio" name="answer" value="<%- question.option_c %>"> <%- question.option_c %>  
+						</div>
+						<div class="col-md-6">
+							<input type="radio" name="answer" value="<%- question.option_d %>"> <%- question.option_d %>  
+						</div>
+					</div>
+
 					<div id="form-messages" style="color: red"></div>
 				</form>
 				<div class="form1">
@@ -54,13 +79,13 @@
 		<% }); %>
 	</div>
 </div>
-<div class="navbar navbar-fixed-bottom">
+<!-- <div class="navbar navbar-fixed-bottom">
 	<div class="container">
 		<div class="bt"><a href="leaderboard">
 			<button type="button" class="navbar-btn btn-primary btn pull-right button" id="leaderboard">Leaderboard</button></a>
 		</div>
 	</div>
-</div> 
+</div>  -->
 
 </body>
 </html>

@@ -2,11 +2,11 @@ var database = require('../models/database');
 var fs = require("fs");
 var posts= {};
 exports.home = function(req,res){
-	/*if(req.session.user){
-		res.redirect('/quiz');
-	}else{*/
+	if(req.session.user){
 		res.render('pages/home');
-	/*}*/
+	}else{
+		res.render('pages/home');
+	}
 }
 exports.quiz = function(req,res){
 	if(req.session.user){
@@ -17,7 +17,7 @@ exports.quiz = function(req,res){
 			if(results.length > 0){
 				res.render('pages/quiz',{questions: [],message: 'You have completed the quiz'});
 			}else{
-				var query = 'select id,statement,option_a,option_b,option_c,option_d from question';
+				var query = 'select id,statement,option_a,option_b,option_c,option_d,image_url from question';
 				database.select(query,true,function(results){
 					res.render('pages/quiz',{questions: results,message: ''});
 				});
