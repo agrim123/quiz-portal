@@ -30,7 +30,7 @@ exports.check = function(req,res){
 		};
 		database.select_one('select * from solved_quiz where user_id=${user_id}',{user_id: user_id},function(result){
 			if(result){
-				res.redirect('/');
+				res.end();
 				console.log('completed');
 			}else{
 				var questions_id = [];
@@ -51,7 +51,8 @@ exports.check = function(req,res){
 					/*console.log(req.session.user + " :: "+score);*/
 					database.insert('update users set score=$1 where id=$2',[score,req.session.user]);
 					database.insert('INSERT INTO solved_quiz(user_id,solved) VALUES(${user_id},${solved})', {user_id: user_id,solved: true});
-				});	
+				});
+				res.sendStatus(200);	
 				res.writeHead(200, {'Content-Type': 'text/html'});
 				res.end();	
 			}
@@ -69,7 +70,7 @@ exports.check = function(req,res){
 			res.end("202");
 		}
 	}else{
-		res.send('Don\'t try to attack !!');
+		res.end('Don\'t try to attack !!');
 	}
 }
 exports.leaderboard = function(req,res){

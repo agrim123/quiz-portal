@@ -3,6 +3,7 @@ $('document').ready(function () {
 	/*$('.submit').click(function(){
 		$('#ajaxContent').load('ajax.html');
 	});*/
+	var question_number = 1;
 	$(window).load(function(){
 		$("#loader").fadeOut("slow");
 	});
@@ -10,6 +11,8 @@ $('document').ready(function () {
 	if($('.main question').first().hasClass('active')){
 		$("#back").hide();
 	}
+	$(".question_number").html('');
+	$(".question_number").html('Question '+ question_number);
 	/*setInterval(function(){
 		var data = {
 			question_id: $('.active #id').val(),
@@ -44,8 +47,9 @@ $('document').ready(function () {
 		var activeElement = $('.active');
 		if(activeElement.next().length){
 			activeElement.removeClass('active').next().addClass('active');
+			question_number++;
 			$(".question_number").html('');
-			$(".question_number").html('Question ');
+			$(".question_number").html('Question '+ question_number);
 		}
 		else{
 			if($(".main > question:last").hasClass('active')){
@@ -62,10 +66,7 @@ $('document').ready(function () {
 		}*/
 	});
 	window.onbeforeunload = function() {
-		if(brain_data){
-			check_answer(brain_data);
-			return 'are you sure you want to leave?';
-		}
+		check_answer(brain_data);
 	}
 });
 function check_answer(data){
@@ -74,16 +75,11 @@ function check_answer(data){
 			method: 'POST',
 			url: '/check',
 			data: JSON.stringify(data),
-		contentType: 'application/json'/*,
-		beforeSend: function() {
-			$("#question_loader").css("display","block");
-		},
-		complete: function() {
-			$("#question_loader").css("display","none");
-		}*/
-	})
+			contentType: 'application/json'
+		})
 		.done(function(){
-			//window.location.reload();
+
+			window.location = '/leaderboard';
 		});
 	}else{
 		alert('attempt atleast one ques!!');

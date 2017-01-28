@@ -16,6 +16,7 @@ cloudinary.config({
 	api_secret: process.env.API_SECRET 
 });
 router.get('/',index.home);
+router.get('/quiz',index.quiz);
 router.get('/admin',admin.home);
 router.get('/login',sessions.login);
 router.post('/login',sessions.login_user);
