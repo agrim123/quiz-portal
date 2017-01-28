@@ -83,7 +83,6 @@ exports.check = function(req,res){
 exports.leaderboard = function(req,res){
 	var query = 'select score,first_name,last_name from users order by score';
 	database.select(query,true,function(results){
-		res.setHeader('Content-Type', 'application/json');
-		res.send(JSON.stringify(results));
+		res.render('pages/leaderboard',{users:results});
 	});
 }
