@@ -1,6 +1,9 @@
 var database = require('../models/database');
 var fs = require("fs");
 var posts= {};
+exports.temp = function(req,res){
+res.render('pages/temp');
+}
 exports.home = function(req,res){
 	if(req.session.user){
 		res.render('pages/home');
