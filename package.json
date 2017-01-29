@@ -6,8 +6,6 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "bcrypt": "^1.0.2",
-    "bcrypt-nodejs": "0.0.3",
     "blueimp-file-upload": "^9.14.2",
     "body-parser": "^1.15.2",
     "child_process": "^1.0.2",

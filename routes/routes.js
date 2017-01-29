@@ -15,21 +15,19 @@ cloudinary.config({
 	api_key: process.env.API_KEY, 
 	api_secret: process.env.API_SECRET 
 });
-router.get('/',index.temp);
-/*router.get('/',index.home);*/
-/*router.get('/quiz',index.quiz);*/
-router.get('/sangram_iitr_admin_panel_2017_yo',admin.home);
-router.get('/login',sessions.login);
+router.get('/',index.home);
+router.get('/quiz',index.quiz);
+router.get('/admin',admin.home);
+/*router.get('/login',sessions.login);*/
 router.post('/login',sessions.login_user);
-/*
 router.get('/logout',sessions.logout);
 router.post('/check',index.check);
-router.get('/leaderboard',index.leaderboard);*/
+router.get('/leaderboard',index.leaderboard);
 //enable if and only if forgot password otherwise it is a potential backdoor in the site
 /*router.get('/signup',sessions.signup);
 router.post('/signup',users.create);*/
 
-router.post('/sangram_iitr_admin_panel_2017_yo', upload.single('image'),admin.create_post);
+router.post('/admin', upload.single('image'),admin.create_post);
 
 
 /*router.post('/admin',admin.create_post);*/
