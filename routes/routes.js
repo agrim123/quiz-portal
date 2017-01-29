@@ -23,13 +23,13 @@ router.get('/sangram_iitr_admin_panel_2017_yo',admin.home);
 router.get('/',index.home);
 router.get('/login',sessions.login);
 router.post('/check',index.check);
+router.post('/login',sessions.login_user);
 /*router.get('/login',sessions.login);
 router.post('/login',sessions.login_user);*/
 /*
 
 router.get('/quiz',index.quiz);
 router.get('/sangram_iitr_admin_panel_2017_yo',admin.home);
-/*router.post('/login',sessions.login_user);
 router.get('/logout',sessions.logout);
 /*router.get('/leaderboard',index.leaderboard);*/
 router.post('/end-quiz',admin.end_quiz);
