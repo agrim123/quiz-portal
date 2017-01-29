@@ -42,7 +42,7 @@ exports.create_post = function(req,res){
 					console.log(stderr);
 					console.log(stdout);
 				});
-				res.redirect('/sangram_iitr_admin_panel_2017_yo');
+				res.redirect('/admin');
 			}else {
 				console.log(error);
 			}
@@ -60,6 +60,6 @@ exports.create_post = function(req,res){
 
 		database.insert('INSERT INTO question(statement, correct_answer,published_on,option_a,option_b,option_c,option_d) VALUES(${statement}, ${correct_answer},${published_on},${option_a},${option_b},${option_c},${option_d})', data);
 		
-		res.redirect('/sangram_iitr_admin_panel_2017_yo');
+		res.redirect('/admin');
 	}
 }

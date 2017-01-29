@@ -1,9 +1,6 @@
 var database = require('../models/database');
 var fs = require("fs");
 var posts= {};
-exports.temp = function(req,res){
-	res.render('pages/temp');
-}
 exports.home = function(req,res){
 	if(req.session.user){
 		res.render('pages/home');
@@ -43,6 +40,7 @@ exports.check = function(req,res){
 				res.end();
 				console.log('completed');
 			}else{
+				console.log(req.body);
 				var questions_id = [];
 				for(i=0;i<req.body.length;i++){
 					questions_id.push(req.body[i].question_id);
@@ -51,20 +49,21 @@ exports.check = function(req,res){
 					var score = 0;
 					for(i=0;i<result.length;i++){
 						if(req.body[i].question_id == result[i].id){
-							if(req.body[i].answer === result[i].correct_answer){
+							console.log(req.body[i].answer +' :::: '+ result[i].correct_answer)
+							if(req.body[i].answer == result[i].correct_answer){
 								score = score + 1;
 							}else{
 								score = score;
 							}
 						}
 					}
-					/*console.log(req.session.user + " :: "+score);*/
+					console.log(req.session.user + " :: "+score);
 					database.insert('update users set score=$1 where id=$2',[score,req.session.user]);
 					database.insert('INSERT INTO solved_quiz(user_id,solved) VALUES(${user_id},${solved})', {user_id: user_id,solved: true});
+					res.sendStatus(200);	
+					res.writeHead(200, {'Content-Type': 'text/html'});
+					res.end();	
 				});
-				res.sendStatus(200);	
-				res.writeHead(200, {'Content-Type': 'text/html'});
-				res.end();	
 			}
 		});
 		if(req.body.answer != '' && req.body.answer != null && req.body.answer != undefined){

@@ -37,12 +37,15 @@ $('document').ready(function () {
 	});*/
 	var brain_data = new Array();
 	$('.submit').on('click',function() {
+		var radio = $("input:radio[name=answer]:checked");
 		$(this).removeClass('submit');
 		$('#form-messages').html('');
 		var data = {
 			question_id: $('.active #id').val(),
-			answer: document.querySelector('input[name="answer"]:checked').value
+			answer:  radio.val()
 		}
+		radio.prop('checked', false);
+		/*console.log(data.answer);*/
 		brain_data.push(data);
 		var activeElement = $('.active');
 		if(activeElement.next().length){
@@ -65,9 +68,9 @@ $('document').ready(function () {
 			check_answer(data);
 		}*/
 	});
-	window.onbeforeunload = function() {
+/*	window.onbeforeunload = function() {
 		check_answer(brain_data);
-	}
+	}*/
 });
 function check_answer(data){
 	if(data){
