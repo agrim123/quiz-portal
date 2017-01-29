@@ -19,8 +19,8 @@ router.get('/',index.temp);
 /*router.get('/',index.home);*/
 /*router.get('/quiz',index.quiz);*/
 router.get('/sangram_iitr_admin_panel_2017_yo',admin.home);
-router.get('/login',sessions.login);
-router.post('/login',sessions.login_user);
+/*router.get('/login',sessions.login);
+router.post('/login',sessions.login_user);*/
 /*
 router.get('/logout',sessions.logout);
 router.post('/check',index.check);
