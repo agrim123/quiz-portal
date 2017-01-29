@@ -2,13 +2,6 @@ var database = require('../models/database');
 var fs = require("fs");
 var posts= {};
 exports.home = function(req,res){
-	database.select('select open from quiz_status where quiz=$1',['quiz'],function(result){
-		if(result.open == true){
-			console.log('open');
-		}else{
-
-		}
-	});
 	if(req.session.user){
 		res.render('pages/home');
 	}else{
