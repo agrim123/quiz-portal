@@ -11,14 +11,14 @@ cloudinary.config({
 });
 var exec = require('child_process').exec;
 exports.home = function(req,res){
-	if(req.session.user){
+/*	if(req.session.user){*/
 		var query = 'SELECT * FROM question';
 		database.select(query,true,function(results){
 			res.render('pages/admin',{questions:results,message:''});
 		});
-	}else{
+/*	}else{
 		res.redirect('/login');
-	}
+	}*/
 }
 exports.start_quiz = function(req,res){
 }
