@@ -1,4 +1,4 @@
-$('document').ready(function () {
+$(document).ready(function () {
 	$.ytLoad();
 	/*$('.submit').click(function(){
 		$('#ajaxContent').load('ajax.html');
@@ -68,9 +68,14 @@ $('document').ready(function () {
 			check_answer(data);
 		}*/
 	});
-/*	window.onbeforeunload = function() {
-		check_answer(brain_data);
-	}*/
+  // window.onbeforeunload = confirmExit;
+  // function confirmExit()
+	 //  {
+	 //    check_answer(brain_data);
+	 //  }
+	 $(".quit-quiz").click(function(){
+	 	check_answer(brain_data);
+	 });
 });
 function check_answer(data){
 	if(data){
@@ -82,7 +87,7 @@ function check_answer(data){
 		})
 		.done(function(){
 
-			window.location = '/leaderboard';
+			window.location.reload();
 		});
 	}else{
 		alert('attempt atleast one ques!!');

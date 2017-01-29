@@ -1,34 +1,36 @@
 <% include ../partials/head %>
 <div class="navbar navbar-default">
 	<div class="container">
-		<a href="https://cognizance.org.in/" class="navbar-brand"> Sangram |</a>
-		<a href="#" class="navbar-brand"> </a>
-		<p class="h4 text4"> SPORTS QUIZ 
+		<div class="col-md-3">
+			<a class="navbar-brand">SANGRAM | SPORTS QUIZ</a>
+		</div>
+		<div class="col-md-3">
+			<a class="navbar-brand">Cricket and Football</a>
+		</div>
+		<div class="col-md-3 col-md-offset-3">
+			<div class = "collapse navbar-collapse navHeaderCollapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						
+						<button type="button" class="btn-primary btn btn-success quit-quiz" >SUBMIT QUIZ</button>
+						
+					</li>
+				</ul>
+			</div>
+
+		</div>
+		
 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<div class = "collapse navbar-collapse navHeaderCollapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li class="text5">
-						<a href="/leaderboard">
-							<button type="button" class="btn-primary btn" id="leaderboard">Leaderboard</button>
-						</a>
-					</li>
-					<li class="text5">
-						<a href="/logout">
-							QUIT QUIZ 
-						</a>
-					</li>
-				</ul>
-			</div>
 		</p>
 	</div>
 </div>
 </div>
-<p style="color:red">Please Donot refresh the page at any point of time during the quiz, it will result in submission of quiz !!.</p>
+<p style="color:#fff" class="text-center"><b>Your progress will be lost on refreshing the page. Please do not refresh the page</b><br>Duration: 20 minutes</p>
 <div class="container">
 	<%- message %>
 	<div class="main">
@@ -52,19 +54,17 @@
 						<label class="sr-only" for="answer">Enter Answer</label>
 						<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
 					</div> -->
-					<div class="row" style="text-align: center;">
-						<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-12">
 							<input type="radio" id="answer" name="answer" value="<%- question.option_a %>"> <%- question.option_a %>
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<input type="radio" id="answer" name="answer" value="<%- question.option_b %>"> <%- question.option_b %>
 						</div>
-					</div>
-					<div class="row" style="text-align: center;">
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<input type="radio" id="answer" name="answer" value="<%- question.option_c %>"> <%- question.option_c %>  
 						</div>
-						<div class="col-md-6">
+						<div class="col-md-12">
 							<input type="radio" id="answer" name="answer" value="<%- question.option_d %>"> <%- question.option_d %>  
 						</div>
 					</div>
@@ -87,12 +87,5 @@
 		</div>
 	</div>
 </div>  -->
-<script type="text/javascript">
-$(document).ready(function(){
-	window.onbeforeunload = function() {
-		check_answer(brain_data);
-	}
-});
-</script>
 </body>
 </html>

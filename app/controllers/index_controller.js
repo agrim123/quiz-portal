@@ -2,6 +2,13 @@ var database = require('../models/database');
 var fs = require("fs");
 var posts= {};
 exports.home = function(req,res){
+	database.select('select open from quiz_status where quiz=$1',['quiz'],function(result){
+		if(result.open == true){
+			console.log('open');
+		}else{
+
+		}
+	});
 	if(req.session.user){
 		res.render('pages/home');
 	}else{
@@ -62,7 +69,7 @@ exports.check = function(req,res){
 					database.insert('INSERT INTO solved_quiz(user_id,solved) VALUES(${user_id},${solved})', {user_id: user_id,solved: true});
 					res.sendStatus(200);	
 					res.writeHead(200, {'Content-Type': 'text/html'});
-					res.end();	
+					res.redirect('/quiz');	
 				});
 			}
 		});
@@ -82,9 +89,9 @@ exports.check = function(req,res){
 		res.end('Don\'t try to attack !!');
 	}
 }
-exports.leaderboard = function(req,res){
+/*exports.leaderboard = function(req,res){
 	var query = 'select score,first_name,last_name from users order by score';
 	database.select(query,true,function(results){
 		res.render('pages/leaderboard',{users:results});
 	});
-}
+}*/

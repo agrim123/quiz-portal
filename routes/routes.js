@@ -17,17 +17,19 @@ cloudinary.config({
 });
 router.get('/',index.home);
 router.get('/quiz',index.quiz);
-router.get('/admin',admin.home);
+/*router.get('/admin',admin.home);*/
 /*router.get('/login',sessions.login);*/
 router.post('/login',sessions.login_user);
 router.get('/logout',sessions.logout);
 router.post('/check',index.check);
-router.get('/leaderboard',index.leaderboard);
+/*router.get('/leaderboard',index.leaderboard);*/
+/*router.post('/end-quiz',admin.end_quiz);
+router.post('/start-quiz',admin.start_quiz);*/
 //enable if and only if forgot password otherwise it is a potential backdoor in the site
 /*router.get('/signup',sessions.signup);
 router.post('/signup',users.create);*/
 
-router.post('/admin', upload.single('image'),admin.create_post);
+/*router.post('/admin', upload.single('image'),admin.create_post);*/
 
 
 /*router.post('/admin',admin.create_post);*/

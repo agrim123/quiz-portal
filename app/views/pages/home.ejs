@@ -1,14 +1,24 @@
 
 <% include ../partials/head %>
 <!-- Display login status -->
-<div id="status"></div>
+<div id="status" style="width: 300px; margin: 0 auto; color: #fff; font-size: 20px;"></div>
 
 <!-- Facebook login or logout button -->
-<a href="javascript:void(0);" onclick="fbLogin()" id="fbLink">Login with Facebook</a>
+<a href="javascript:void(0);" onclick="fbLogin()" id="fbLink" class="loginbutton">Login with Facebook</a>
 
 <!-- Display user profile data -->
 <div id="userData"></div>
-<a href="/quiz" id="quiz"></a>
+<a href="/quiz" id="quiz" style="display: block;
+    padding: 20px 40px 20px 40px;
+    background-color: #fff;
+    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+    text-decoration: none;
+    font-size: 18px;
+    color: #28BCEA;
+    margin-top: 20px;
+"></a>
 <script>
 window.fbAsyncInit = function() {
     // FB JavaScript SDK configuration and setup
@@ -57,7 +67,7 @@ function getFbUserData(){
         document.getElementById('quiz').innerHTML = 'Go to Quiz';
         document.getElementById('fbLink').innerHTML = 'Logout from Facebook';
         document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
-        document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p><p><b>Gender:</b> '+response.gender+'</p><p><b>Locale:</b> '+response.locale+'</p><p><b>Picture:</b> <img src="'+response.picture.data.url+'"/></p><p><b>FB Profile:</b> <a target="_blank" href="'+response.link+'">click to view profile</a></p>';
+        document.getElementById('userData').innerHTML = '';
         saveUserData(response);
     });
 }

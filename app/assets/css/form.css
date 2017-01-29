@@ -2,6 +2,24 @@ body{
 	background-color:#28BCEA;
 	height:700px;
 }
+
+.loginbutton{
+	display: block;
+	padding: 20px 40px 20px 40px;
+	background-color: #fff;
+	width: 20%;
+	text-align: center;
+	margin: 0 auto;
+	text-decoration: none;
+	font-size: 18px;
+	color: #28BCEA;
+	margin-top: 10%;
+}
+
+.loginbutton:hover{
+	text-decoration: none;
+}
+
 .text-primary{
 	color:#28BCEA;
 	font-family:Roboto;

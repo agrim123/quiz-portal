@@ -15,6 +15,9 @@ CREATE TABLE "session" (
 	"sess" json NOT NULL,
 	"expire" timestamp(6) NOT NULL
 )
+CREATE TABLE quiz_status (
+	open boolean default FALSE
+);
 WITH (OIDS=FALSE);
 ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 CREATE TABLE users(	

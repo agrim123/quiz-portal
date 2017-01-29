@@ -20,6 +20,10 @@ exports.home = function(req,res){
 		res.redirect('/login');
 	}
 }
+exports.start_quiz = function(req,res){
+}
+exports.end_quiz = function(req,res){
+}
 exports.create_post = function(req,res){
 	const results = [];
 	if(req.file){
