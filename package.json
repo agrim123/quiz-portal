@@ -20,6 +20,7 @@
     "ejs": "~2.5.2",
     "express": "~4.14.0",
     "express-session": "^1.14.2",
+    "forever": "^0.15.3",
     "fs": "0.0.1-security",
     "method-override": "^2.3.7",
     "morgan": "~1.7.0",
@@ -32,5 +33,9 @@
     "pg-promise": "^5.5.1",
     "rmdir": "^1.2.0",
     "serve-favicon": "~2.3.0"
+  },
+  "scripts": {
+    "start": "forever start --minUptime 1000 --spinSleepTime 1000 app.js",
+    "stop":  "forever stop app.js"
   }
 }
