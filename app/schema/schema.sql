@@ -24,7 +24,7 @@ CREATE TABLE users(
 	password varchar(80) not null,
 	created_on timestamp default current_timestamp,
 	score INT default 0,
-	rol VARCHAR(10)
+	role VARCHAR(10)
 );
 CREATE TABLE map_users(
 	user_id INT,
