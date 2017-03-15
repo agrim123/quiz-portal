@@ -1,11 +1,14 @@
 {
-  "name": "kshitijv2",
+  "name": "quiz",
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
-  },
-  "dependencies": {
+    "start": "forever start --minUptime 1000 --spinSleepTime 1000 ./bin/www",
+    "stop": "forever stop ./bin/www",
+    "restart": "forever restart ./bin/www",
+    "watch": "nodemon ./bin/www"
+},
+"dependencies": {
     "bcrypt": "^1.0.2",
     "bcrypt-nodejs": "0.0.3",
     "blueimp-file-upload": "^9.14.2",
@@ -26,6 +29,7 @@
     "morgan": "~1.7.0",
     "multer": "^1.2.1",
     "multer-storage-cloudinary": "^2.2.1",
+    "nodemon": "^1.11.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "pg": "^6.1.2",
@@ -33,9 +37,5 @@
     "pg-promise": "^5.5.1",
     "rmdir": "^1.2.0",
     "serve-favicon": "~2.3.0"
-  },
-  "scripts": {
-    "start": "forever start --minUptime 1000 --spinSleepTime 1000 app.js",
-    "stop":  "forever stop app.js"
-  }
+}
 }

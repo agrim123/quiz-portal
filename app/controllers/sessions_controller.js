@@ -20,7 +20,7 @@ exports.login_user = function(req,res){
 	var data = {username: req.body.username};
 	database.select_one(query,data,function(user){
 		if(user === null){
-			res.render('pages/login',{msg: "You are not in kshitij family!!"});
+			res.render('pages/login',{msg: "Please enter coorect credentials!"});
 		}else{
 			if(user.password === user_helper.hashpassword(req.body.password.toString())){
 				req.session.regenerate(function(){
