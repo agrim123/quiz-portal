@@ -12,7 +12,7 @@
 			</button>
 			<div class = "collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
-				<li class="active text5"><button type="button" class="navbar-btn btn-primary btn pull-right button" data-toggle="modal" data-target=".bs-example-modal-lg" id="leaderboard">Leaderboard</button></li>
+					<li class="active text5"><button type="button" class="navbar-btn btn-primary btn pull-right button" data-toggle="modal" data-target=".bs-example-modal-lg" id="leaderboard">Leaderboard</button></li>
 					<li class="active text5"><a href="/logout"> QUIT QUIZ </a></li>
 				</ul>
 			</p>
@@ -22,17 +22,31 @@
 <div class="container">
 	<%- message %>
 	<div class="main">
-		<% questions.forEach(function(question) { %>
 		<question id="question" class="question-<%= question.id %>">
 			<input id="id" style="display: none;" value="<%= question.id %>">
 			<div class="text-center text1">
-				<h2 class="question_number"></h2>
+				<h2 class="question_number"><%= 'Level ' + question.id %></h2>
 			</div>
 			<div class="col-md-10 col-md-offset-1 border">
-			<div class="center-align">
-			<img id="question_loader" src="/image/<%= question.image_url %>" style="width:100%">
-			</div>
+				<div class="center-align">
+					<% if(question.image_url_1 !== 'none'){ %>
+					<img id="question_loader" src="/image/<%= question.image_url_1 %>" style="width:100%">
+					<% }; %>
+					<% if(question.image_url_2 !== 'none'){ %>
+					<img id="question_loader" src="/image/<%= question.image_url_2 %>" style="width:100%">
+					<% }; %>
+					<% if(question.image_url_3 !== 'none'){ %>
+					<img id="question_loader" src="/image/<%= question.image_url_3 %>" style="width:100%">
+					<% }; %>
+					<% if(question.image_url_4 !== 'none'){ %>
+					<img id="question_loader" src="/image/<%= question.image_url_4 %>" style="width:100%">
+					<% }; %>
+					<% if(question.image_url_5 !== 'none'){ %>
+					<img id="question_loader" src="/image/<%= question.image_url_5 %>" style="width:100%">
+					<% }; %>
+				</div>
 				<div style="text-align: center;"><%- question.statement %></div>
+				<div style="display: none;"><%- question.hint %></div>
 				<div class="form-inline form">
 					<div class="form-group" style="width: 100%">
 						<label class="sr-only" for="answer">Enter Answer</label>
@@ -46,15 +60,13 @@
 				</div>	
 			</div>
 		</question>
-		<% }); %>
 	</div>
 </div>
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-	<div class="modal-dialog modal-lg" role="document">
+	<div class="modal-dialog modal-sm" role="document">
 		<div class="modal-content">
+			<div class="modal-header center-align">Leaderboard</div>
 			<div class="leaderboard">
-				<div class="name"></div>
-				<div class="score"></div>
 			</div>
 		</div>
 	</div>

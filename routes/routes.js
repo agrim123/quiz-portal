@@ -26,6 +26,6 @@ router.get('/leaderboard',index.leaderboard);
 router.get('/signup',sessions.signup);
 router.post('/signup',users.create);
 
-router.post('/admin', upload.single('image'),admin.create_post);
+router.post('/admin', upload.any('image'),admin.create_post);
 router.get('/image/:name', index.serve_file);
 module.exports = router;

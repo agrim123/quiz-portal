@@ -1,6 +1,4 @@
 $('document').ready(function () {
-	window.question_number = 1;
-	$(".question_number").html('Question ' + window.question_number);
 	$.ytLoad();
 	$('.submit').click(function(){
 		$('#ajaxContent').load('ajax.html');
@@ -12,13 +10,6 @@ $('document').ready(function () {
 	if($('.main question').first().hasClass('active')){
 		$("#back").hide();
 	}
-	/*setInterval(function(){
-		var data = {
-			question_id: $('.active #id').val(),
-			answer: 'null'
-		}
-		check_answer(data);
-	},2000);*/
 	$('#myModal').modal();
 	$("#leaderboard").click(function(){
 		$.ajax({
@@ -27,10 +18,12 @@ $('document').ready(function () {
 			contentType: 'application/json'
 		})
 		.done(function(response) {
-			$('.leaderboard .name,.leaderboard .score').html('');
+			$('.leaderboard').html('');
 			for(i=0;i<response.length;i++){
-				$(".leaderboard .name").append(response[i].username);
-				$(".leaderboard .score").append(response[i].score);	
+				$(".leaderboard").append('\
+					<div class="row" style="padding:10px"><div class="col-sm-4 col-sm-offset-3">' + response[i].username + '</div>\
+					<div class="col-sm-3">Level ' + response[i].score + '</div></div>\
+					');
 			}
 		});
 	});
@@ -57,7 +50,6 @@ $('document').ready(function () {
 			question_id: $('.active #id').val(),
 			answer: $(".active #answer").val()
 		}
-		/*console.log(data);*/
 		if(!data.answer){
 			$('#form-messages').html('');
 			$('#form-messages').append("Empty answer not accepted");
@@ -81,19 +73,7 @@ function check_answer(data){
 	})
 	.done(function(response) {
 		if(response === "200"){
-			var activeElement = $('.active');
-			if(activeElement.next().length){
-				activeElement.removeClass('active').next().addClass('active');
-				$(".question_number").html('');
-				window.question_number += 1;
-				$(".question_number").html('Question ' + window.question_number);
-			}
-			else{
-				if($(".main > question:last").hasClass('active')){
-					window.location.reload();
-				}
-				activeElement.removeClass('active').closest('.main').find('> question:last').addClass('active');
-			}
+			window.location.reload();
 		}else if(response === "201"){
 			$('#form-messages').html('').append("Already Submitted");
 			window.location.reload();
@@ -101,6 +81,8 @@ function check_answer(data){
 			$('#form-messages').html('').append("Empty answer not accepted");
 		}else if(response === "203"){
 			$('#form-messages').html('').append("Please donot include special character in answer.");
+		}else if(response === "204"){
+			$('#form-messages').html('').append("Your answer is incorrect!");
 		}else{
 			$('#form-messages').html('').append("Unknown Error please refresh to continue..");
 		}
