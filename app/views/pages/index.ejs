@@ -12,6 +12,7 @@
 			</button>
 			<div class = "collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
+				<li class="active text5"><button type="button" class="navbar-btn btn-primary btn pull-right button" data-toggle="modal" data-target=".bs-example-modal-lg" id="leaderboard">Leaderboard</button></li>
 					<li class="active text5"><a href="/logout"> QUIT QUIZ </a></li>
 				</ul>
 			</p>
@@ -32,13 +33,13 @@
 			<img id="question_loader" src="/image/<%= question.image_url %>" style="width:100%">
 			</div>
 				<div style="text-align: center;"><%- question.statement %></div>
-				<form class="form-inline form">
+				<div class="form-inline form">
 					<div class="form-group" style="width: 100%">
 						<label class="sr-only" for="answer">Enter Answer</label>
 						<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
 					</div>
 					<div id="form-messages" style="color: red"></div>
-				</form>
+				</div>
 				<div class="form1">
 					<button href="#" class="btn-success btn button1 submit" style="z-index: 99999">	 SUBMIT
 					</button>
@@ -48,14 +49,6 @@
 		<% }); %>
 	</div>
 </div>
-<div class="navbar navbar-fixed-bottom">
-	<div class="container">
-		<p class="navbar-text pull-left text2">Score: </p>
-		<div class="bt">
-			<button type="button" class="navbar-btn btn-primary btn pull-right button" data-toggle="modal" data-target=".bs-example-modal-lg" id="leaderboard">Leaderboard</button>
-		</div>
-	</div>
-</div> 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content">

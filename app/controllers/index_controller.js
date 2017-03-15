@@ -3,7 +3,6 @@ var fs = require("fs");
 var posts= {};
 var path = require('path');
 exports.home = function(req,res){
-	console.log(req.session.user);
 	if(req.session.user){
 		var user_id = req.session.user;
 		var query = 'select * from map_users where user_id=${user_id} order by question_id';

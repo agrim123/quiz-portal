@@ -1,4 +1,6 @@
 $('document').ready(function () {
+	window.question_number = 1;
+	$(".question_number").html('Question ' + window.question_number);
 	$.ytLoad();
 	$('.submit').click(function(){
 		$('#ajaxContent').load('ajax.html');
@@ -31,7 +33,23 @@ $('document').ready(function () {
 				$(".leaderboard .score").append(response[i].score);	
 			}
 		});
-	})
+	});
+	$("#answer").keyup(function(event){
+		if(event.keyCode == 13){
+			$('.submit').removeClass('submit');
+			$('#form-messages').html('');
+			var data = {
+				question_id: $('.active #id').val(),
+				answer: $(".active #answer").val()
+			}
+			if(!data.answer){
+				$('#form-messages').html('');
+				$('#form-messages').append("Empty answer not accepted");
+			}else{
+				check_answer(data);
+			}
+		}
+	});
 	$('.submit').on('click',function() {
 		$(this).removeClass('submit');
 		$('#form-messages').html('');
@@ -67,7 +85,8 @@ function check_answer(data){
 			if(activeElement.next().length){
 				activeElement.removeClass('active').next().addClass('active');
 				$(".question_number").html('');
-				$(".question_number").html('Question ');
+				window.question_number += 1;
+				$(".question_number").html('Question ' + window.question_number);
 			}
 			else{
 				if($(".main > question:last").hasClass('active')){
