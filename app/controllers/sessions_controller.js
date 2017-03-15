@@ -5,7 +5,7 @@ exports.signup = function(req,res){
 	if(req.session.user){
 		res.redirect('/admin');
 	}else{
-		res.render('pages/signup', { title: 'Quiz'});
+		res.render('pages/signup', { title: 'Quiz',message: ''});
 	}
 }
 exports.login = function(req,res){
@@ -20,7 +20,7 @@ exports.login_user = function(req,res){
 	var data = {username: req.body.username};
 	database.select_one(query,data,function(user){
 		if(user === null){
-			res.render('pages/login',{msg: "Please enter coorect credentials!"});
+			res.render('pages/login',{msg: "Please enter correct credentials!"});
 		}else{
 			if(user.password === user_helper.hashpassword(req.body.password.toString())){
 				req.session.regenerate(function(){

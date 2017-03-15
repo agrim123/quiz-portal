@@ -21,3 +21,4 @@ CREATE TABLE map_users(
 	FOREIGN KEY (user_id) REFERENCES users(id),
 	FOREIGN KEY (question_id) REFERENCES question(id)
 );
+ALTER TABLE 'users' ADD "role" VARCHAR(10);

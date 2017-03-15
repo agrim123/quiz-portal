@@ -7,20 +7,21 @@ exports.create = function(req,res){
 		password:user_helper.hashpassword(req.body.password),
 		created_on:new Date
 	};
-	console.log(data);
-	console.log(data.username.match('cogni'));
-
-	pg.connect(database.url, (err, client, done) => {
-		if(err) {
-			done();
-			console.log(err);
-			return res.status(500).json({success: false, data: err});
-		}
-		const query = client.query('INSERT INTO users(username, password,created_on) values($1, $2,$3)',
-			[data.username, data.password,data.created_on]);
-		query.on('end', () => { 
-			done();	
-			res.render('pages/login');
+	if(data.username.match('cogni')){
+		pg.connect(database.url, (err, client, done) => {
+			if(err) {
+				done();
+				console.log(err);
+				return res.status(500).json({success: false, data: err});
+			}
+			const query = client.query('INSERT INTO users(username, password,created_on,role) values($1, $2,$3,$4)',
+				[data.username, data.password,data.created_on,'user']);
+			query.on('end', () => { 
+				done();	
+				res.redirect('/login');
+			});
 		});
-	});
+	}else{
+		res.render('pages/signup',{message: 'Please provide a valid cogniId'});
+	}
 }

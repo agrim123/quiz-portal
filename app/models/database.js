@@ -25,7 +25,7 @@ exports.insert = function(query,data){
 
 	db.none(query,data)
 	.then(function () {
-
+		
 	})
 	.catch(function (error) {
 		console.log('ERROR:', error)

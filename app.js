@@ -19,6 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'app/assets')));
+app.use(express.static(path.join(__dirname, 'app/uploads')));
 var pgp = require('pg-promise')
 , session = require('express-session')
 , pgSession = require('connect-pg-simple')(session);

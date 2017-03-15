@@ -1,7 +1,9 @@
 var database = require('../models/database');
 var fs = require("fs");
 var posts= {};
+var path = require('path');
 exports.home = function(req,res){
+	console.log(req.session.user);
 	if(req.session.user){
 		var user_id = req.session.user;
 		var query = 'select * from map_users where user_id=${user_id} order by question_id';
@@ -21,7 +23,7 @@ exports.home = function(req,res){
 					}
 				});
 			}else{
-				var query = 'select id,statement from question';
+				var query = 'select id,statement,image_url from question';
 				database.select(query,true,function(results){
 					res.render('pages/index',{questions: results,message: ''});
 				});
@@ -30,6 +32,9 @@ exports.home = function(req,res){
 	}else{
 		res.redirect('/login');
 	}
+}
+exports.serve_file = function(req,res) {
+	res.sendFile(path.resolve('./app/uploads/' + req.params.name.replace('.jpg','')));
 }
 exports.check = function(req,res){
 	if(req.session.user){
