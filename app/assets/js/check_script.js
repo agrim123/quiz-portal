@@ -10,6 +10,8 @@ $('document').ready(function () {
 	if($('.main question').first().hasClass('active')){
 		$("#back").hide();
 	}
+	var $img = $('#question_images');
+	
 	$('#myModal').modal();
 	$("#leaderboard").click(function(){
 		$.ajax({

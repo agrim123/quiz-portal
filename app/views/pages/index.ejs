@@ -28,23 +28,21 @@
 				<h2 class="question_number"><%= 'Level ' + question.id %></h2>
 			</div>
 			<div class="col-md-10 col-md-offset-1 border">
-				<div class="center-align">
-					<% if(question.image_url_1 !== 'none'){ %>
-					<img id="question_loader" src="/image/<%= question.image_url_1 %>" style="width:100%">
-					<% }; %>
-					<% if(question.image_url_2 !== 'none'){ %>
-					<img id="question_loader" src="/image/<%= question.image_url_2 %>" style="width:100%">
-					<% }; %>
-					<% if(question.image_url_3 !== 'none'){ %>
-					<img id="question_loader" src="/image/<%= question.image_url_3 %>" style="width:100%">
-					<% }; %>
-					<% if(question.image_url_4 !== 'none'){ %>
-					<img id="question_loader" src="/image/<%= question.image_url_4 %>" style="width:100%">
-					<% }; %>
-					<% if(question.image_url_5 !== 'none'){ %>
-					<img id="question_loader" src="/image/<%= question.image_url_5 %>" style="width:100%">
-					<% }; %>
-				</div>
+				<% if(question.image_url_1 !== 'none'){ %>
+				<img id="question_images" src="/image/<%= question.image_url_1 %>" style="width:30%">
+				<% }; %>
+				<% if(question.image_url_2 !== 'none'){ %>
+				<img id="question_images" src="/image/<%= question.image_url_2 %>" style="width:30%">
+				<% }; %>
+				<% if(question.image_url_3 !== 'none'){ %>
+				<img id="question_images" src="/image/<%= question.image_url_3 %>" style="width:30%">
+				<% }; %>
+				<% if(question.image_url_4 !== 'none'){ %>
+				<img id="question_images" src="/image/<%= question.image_url_4 %>" style="width:30%">
+				<% }; %>
+				<% if(question.image_url_5 !== 'none'){ %>
+				<img id="question_images" src="/image/<%= question.image_url_5 %>" style="width:30%">
+				<% }; %>
 				<div style="text-align: center;"><%- question.statement %></div>
 				<div style="display: none;"><%- question.hint %></div>
 				<div class="form-inline form">
