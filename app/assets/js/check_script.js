@@ -65,9 +65,14 @@ function check_answer(data){
 		method: 'POST',
 		url: '/check',
 		data: JSON.stringify(data),
-		contentType: 'application/json'
+		contentType: 'application/json',
+		beforeSend: function(){
+			$("#ajax-messages").html('').append('Submitting answer...');
+		}
+
 	})
 	.done(function(response) {
+		$("#ajax-messages").html('');
 		if(response === "200"){
 			window.location.reload();
 		}else if(response === "201"){

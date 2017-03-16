@@ -1,6 +1,29 @@
-<form method="POST" action="/signup">
-CogniId: <input type="text" name="cogniid">
-Password: <input type="password" name="password">
-<input type="submit" value="Register">
+<% include ../partials/head %>
+<link rel="stylesheet" type="text/css" href="/css/form.css">
+
+<form class="login" method="POST" action="/signup">
+  
+  <fieldset>
+    
+  	<legend class="legend">Signup: Cognizance ILLUSHUN</legend>
+    
+    <div class="input">
+    	<input type="username" placeholder="Cogni Id" name="cogniid" required />
+    </div>
+    
+    <div class="input">
+    	<input type="password" placeholder="Password" name="password" required />
+    </div>
+    <div class="input center-align" style="color: red;font-size: 15px">
+    	
+      <%= message %>
+    </div>
+    <button type="submit" class="submit"><i class="fa fa-long-arrow-right"></i></button>
+    
+  </fieldset>
+  
+  <div class="feedback">
+Already registered! <a href="/login">Login</a>
+  </div>
 </form>
-<%= message %>
+<script type="text/javascript" src="js/form.js"></script>
