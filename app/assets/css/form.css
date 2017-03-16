@@ -17,8 +17,7 @@ body{
 }
 .text1{
 	color:white;
-	padding-top:5%;
-	padding-bottom:2%;
+	padding-bottom:1%;
 }
 
 .text2{
@@ -49,7 +48,6 @@ body{
 
 .button1{
 	border-radius:100px ;
-	margin-bottom: -20px;
 	padding-right:30px;
 	padding-left:30px;
 	-webkit-box-shadow: 0px 0px 21px -2px rgba(65,65,158,1);
@@ -57,19 +55,14 @@ body{
 	box-shadow: 0px 0px 21px -2px rgba(65,65,158,1);
 }
 
-.form1{
-	padding-left:42%;
-	
-	
-}	
-
 .bt{
 	padding-right:9%;
 }
 .button{
-	border-radius:100px ;
+	border-radius:0;
 	cursor:pointer;
 	outline:none;
 	padding-right:30px;
 	padding-left:30px;
+	margin-right: 2%
 }

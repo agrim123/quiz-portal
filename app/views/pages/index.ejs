@@ -1,9 +1,9 @@
 <% include ../partials/head %>
 <div class="navbar navbar-default">
 	<div class="container">
-		<a href="https://cognizance.org.in/" class="navbar-brand"> COGNIZANCE |</a>
+		<a href="https://cognizance.org.in/" class="navbar-brand"> COGNIZANCE IITR|</a>
 		<a href="#" class="navbar-brand"> TEL-E-TEL </a>
-		<p class="h4 text4"> &nbsp; 
+		<p class="h4 text4"> Welcome to <%= 'Level ' + question.id %>!!
 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
@@ -19,45 +19,66 @@
 		</div>
 	</div>
 </div>
-<div class="container">
+<div class="container-fluid" style="margin-bottom: 5%">
 	<%- message %>
-	<div class="main">
-		<question id="question" class="question-<%= question.id %>">
-			<input id="id" style="display: none;" value="<%= question.id %>">
-			<div class="text-center text1">
-				<h2 class="question_number"><%= 'Level ' + question.id %></h2>
-			</div>
-			<div class="col-md-10 col-md-offset-1 border">
-				<% if(question.image_url_1 !== 'none'){ %>
-				<img id="question_images" src="/image/<%= question.image_url_1 %>" style="width:30%">
-				<% }; %>
-				<% if(question.image_url_2 !== 'none'){ %>
-				<img id="question_images" src="/image/<%= question.image_url_2 %>" style="width:30%">
-				<% }; %>
-				<% if(question.image_url_3 !== 'none'){ %>
-				<img id="question_images" src="/image/<%= question.image_url_3 %>" style="width:30%">
-				<% }; %>
-				<% if(question.image_url_4 !== 'none'){ %>
-				<img id="question_images" src="/image/<%= question.image_url_4 %>" style="width:30%">
-				<% }; %>
-				<% if(question.image_url_5 !== 'none'){ %>
-				<img id="question_images" src="/image/<%= question.image_url_5 %>" style="width:30%">
-				<% }; %>
-				<div style="text-align: center;"><%- question.statement %></div>
-				<div style="display: none;"><%- question.hint %></div>
-				<div class="form-inline form">
-					<div class="form-group" style="width: 100%">
-						<label class="sr-only" for="answer">Enter Answer</label>
-						<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
-					</div>
-					<div id="form-messages" style="color: red"></div>
+	<div class="row">
+		<div class="col-sm-9">
+			<question id="question" class="question-<%= question.id %>">
+				<input id="id" style="display: none;" value="<%= question.id %>">
+				<div class="text-center text1">
+					<h2 class="question_number"></h2>
 				</div>
-				<div class="form1">
-					<button href="#" class="btn-success btn button1 submit" style="z-index: 99999">	 SUBMIT
-					</button>
-				</div>	
-			</div>
-		</question>
+				<div class="col-md-11 col-md-offset-1 border">
+					<div class="row">
+						<div class="col-sm-12">
+							<% if(question.image_url_1 !== 'none'){ %>
+							<img id="question_images" src="/image/<%= question.image_url_1 %>" style="width:30%">
+							<% }; %>
+							<% if(question.image_url_2 !== 'none'){ %>
+							<img id="question_images" src="/image/<%= question.image_url_2 %>" style="width:30%">
+							<% }; %>
+							<% if(question.image_url_3 !== 'none'){ %>
+							<img id="question_images" src="/image/<%= question.image_url_3 %>" style="width:30%">
+							<% }; %>
+							<% if(question.image_url_4 !== 'none'){ %>
+							<img id="question_images" src="/image/<%= question.image_url_4 %>" style="width:30%">
+							<% }; %>
+							<% if(question.image_url_5 !== 'none'){ %>
+							<img id="question_images" src="/image/<%= question.image_url_5 %>" style="width:30%">
+							<% }; %>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div style="text-align: center;"><%- question.statement %></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div style="display: none;"><%- question.hint %></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-inline form">
+								<div class="form-group" style="width: 100%">
+									<label class="sr-only" for="answer">Enter Answer</label>
+									<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
+								</div>
+								<div id="form-messages" style="color: red"></div>
+							</div>
+							<div class="center-align">
+								<button href="#" class="btn-success btn button1 submit" style="z-index: 99999">	 SUBMIT
+								</button>
+							</div>	
+						</div>
+					</div>
+				</div>
+			</question>
+		</div>
+		<div class="col-sm-3" style="overflow-y: auto;height: 100vh">
+			<a class="twitter-timeline" href="https://twitter.com/CognizanceIITR">Cognizance IITR</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+		</div>
 	</div>
 </div>
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
@@ -69,5 +90,22 @@
 		</div>
 	</div>
 </div>
+<script>window.twttr = (function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0],
+	t = window.twttr || {};
+	if (d.getElementById(id)) return t;
+	js = d.createElement(s);
+	js.id = id;
+	js.src = "https://platform.twitter.com/widgets.js";
+	fjs.parentNode.insertBefore(js, fjs);
+
+	t._e = [];
+	t.ready = function(f) {
+		t._e.push(f);
+	};
+
+	return t;
+}(document, "script", "twitter-wjs"));</script>
+<!-- hitman was here -->
 </body>
 </html>
