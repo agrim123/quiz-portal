@@ -75,7 +75,7 @@ exports.check = function(req,res){
 	}
 }
 exports.leaderboard = function(req,res){
-	var query = 'select score,username from users order by score';
+	var query = 'select score,username from users order by score limit 10';
 	database.select(query,{user_id: req.session.user},function(results){
 		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify(results));

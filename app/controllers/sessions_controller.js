@@ -5,14 +5,14 @@ exports.signup = function(req,res){
 	if(req.session.user){
 		res.redirect('/admin');
 	}else{
-		res.render('pages/signup', { title: 'Quiz',message: ''});
+		res.render('pages/signup', { title: 'Cognizance IITR',message: ''});
 	}
 }
 exports.login = function(req,res){
 	if(req.session.user){
 		res.redirect('/');
 	}else{
-		res.render('pages/login',{title:'Kshitij',msg:""});
+		res.render('pages/login',{title:'Cognizance IITR',msg:""});
 	}
 }
 exports.login_user = function(req,res){

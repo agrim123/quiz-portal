@@ -7,8 +7,8 @@
     "stop": "forever stop ./bin/www",
     "restart": "forever restart ./bin/www",
     "watch": "nodemon ./bin/www"
-},
-"dependencies": {
+  },
+  "dependencies": {
     "bcrypt": "^1.0.2",
     "bcrypt-nodejs": "0.0.3",
     "blueimp-file-upload": "^9.14.2",
@@ -35,7 +35,8 @@
     "pg": "^6.1.2",
     "pg-native": "^1.10.0",
     "pg-promise": "^5.5.1",
+    "request": "^2.81.0",
     "rmdir": "^1.2.0",
     "serve-favicon": "~2.3.0"
-}
+  }
 }
