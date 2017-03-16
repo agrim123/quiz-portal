@@ -19,6 +19,18 @@
 		</div>
 	</div>
 </div>
+<div class="row">
+	<div class="col-sm-6 col-md-offset-3">
+		<div class="well">
+			You are logged in as <%= cogniid %>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-sm-8 col-md-offset-1">
+		Answers are in <b>lowercase only</b>
+	</div>
+</div>
 <div class="container-fluid" style="margin-bottom: 5%">
 	<div class="row">
 		<div class="col-sm-9 center-align">
@@ -63,7 +75,7 @@
 						<div class="col-sm-12">
 							<div class="form-inline form">
 								<div class="form-group" style="width: 100%">
-								<input id="question_id" name="question_id" value="<%= question.id %>" hidden>
+									<input id="question_id" name="question_id" value="<%= question.id %>" hidden>
 									<label class="sr-only" for="answer">Enter Answer</label>
 									<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
 								</div>
@@ -110,6 +122,5 @@
 
 	return t;
 }(document, "script", "twitter-wjs"));</script>
-<!-- hitman was here -->
 </body>
 </html>

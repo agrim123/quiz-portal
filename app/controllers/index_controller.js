@@ -11,19 +11,18 @@ exports.home = function(req,res){
 				var data = {user_id:user_id};
 				database.select(query,data,function(results){
 					if(results.length > 0){
-						var done_questions = new Array();
-						for(i = 0;i<results.length;i++){
-							done_questions.push(results[i].question_id);
-						}
-						var query = 'SELECT * from question left join map_users on question.id = map_users.question_id except select * from question right join map_users on question.id = map_users.question_id order by id limit 1';
-						database.select_one(query,true,function(result){
-							if(result === null){
-								res.render('pages/index',{question: [], message: "<div class='banner'>You have completed the quiz! Please wait for quiz to complete and follow leaderboard</div>"});
-							}else if(results.length > 0){
-								res.render('pages/index',{question: result,message: ''});
-							}else{
-								res.render('pages/index',{question: [], message: "<div class='banner'>You have completed the quiz! Please wait for quiz to complete and follow leaderboard</div>"});
-							}
+						/*var query = 'SELECT * from question left join map_users on question.id = map_users.question_id except select * from question right join map_users on question.id = map_users.question_id where user_id=${id} order by id desc limit 1';*/
+						var query = 'select MAX(question_id) from map_users where user_id=${id}';
+						database.select_one(query,{id: user_id},function(result){
+							database.select_one('select * from question where id=${id}',{id: result.max+1},function(result){
+								if(result === null){
+									res.render('pages/index',{question: [], message: "<div class='banner'>You have completed the quiz! Please wait for quiz to complete and follow leaderboard</div>", cogniid: req.session.username});
+								}else if(results.length > 0){
+									res.render('pages/index',{question: result,message: '', cogniid: req.session.username});
+								}else{
+									res.render('pages/index',{question: [], message: "<div class='banner'>You have completed the quiz! Please wait for quiz to complete and follow leaderboard</div>", cogniid: req.session.username});
+								}
+							});
 						});
 					}else{
 						var query = 'select * from question order by id limit 1';
@@ -83,14 +82,14 @@ exports.check = function(req,res){
 			}
 		}else if(result.status == 0){
 			res.writeHead(200, {'Content-Type': 'text/html'});
-				res.end("205");
+			res.end("205");
 		}else{
 			res.redirect('/login');
 		}
 	});
 }
 exports.leaderboard = function(req,res){
-	var query = 'select score,username from users order by score limit 10';
+	var query = 'select score,username from users order by score desc limit 10';
 	database.select(query,{user_id: req.session.user},function(results){
 		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify(results));
