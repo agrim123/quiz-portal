@@ -19,22 +19,22 @@
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-sm-6 col-md-offset-3">
-		<div class="well">
-			You are logged in as <%= cogniid %>
-		</div>
-	</div>
-</div>
-<div class="row">
-	<div class="col-sm-8 col-md-offset-1">
-		Answers are in <b>lowercase only</b>
-	</div>
-</div>
 <div class="container-fluid" style="margin-bottom: 5%">
+	<%- message %>
 	<div class="row">
 		<div class="col-sm-9 center-align">
-			<%- message %>
+			<div class="row">
+				<div class="col-sm-6 col-md-offset-3">
+					<div class="well">
+						You are logged in as <%= cogniid %>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-8 col-md-offset-1">
+					Answers are in <b>lowercase only</b>
+				</div>
+			</div>
 			<% if(question.length != 0){ %>
 			<question id="question" class="question-<%= question.id %>">
 				<input id="id" style="display: none;" value="<%= question.id %>">

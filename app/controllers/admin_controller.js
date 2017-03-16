@@ -18,18 +18,10 @@ var upload = multer({ storage: storage });
 
 var exec = require('child_process').exec;
 exports.home = function(req,res){
-		var query = 'SELECT role FROM users where id=${id}';
-		database.select(query,{id: req.session.user},function(result){
-			if(result[0].role === 'admin'){
-				var query = 'SELECT * FROM question';
-				database.select(query,true,function(results){
-					res.render('pages/admin',{questions:results,message:''});
-				});
-			}else{
-				res.redirect('/');
-			}
-
-		});
+	var query = 'SELECT * FROM question';
+	database.select(query,true,function(results){
+		res.render('pages/admin',{questions:results,message:''});
+	});
 }
 exports.create_post = function(req,res){
 	const results = [];

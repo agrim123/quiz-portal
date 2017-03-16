@@ -27,12 +27,12 @@ exports.home = function(req,res){
 					}else{
 						var query = 'select * from question order by id limit 1';
 						database.select_one(query,true,function(result){
-							res.render('pages/index',{question: result, message: ''});
+							res.render('pages/index',{question: result, message: '',cogniid: req.session.username});
 						});
 					}
 				});
 			}else if(result.status == 0){
-				res.render('pages/index',{question: [],message: 'Quiz has not yet started!'});
+				res.render('pages/index',{question: [],message: 'Quiz has not yet started!',cogniid: req.session.username});
 			}else{
 				res.redirect('/login');
 			}
