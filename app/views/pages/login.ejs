@@ -2,11 +2,11 @@
 <link rel="stylesheet" type="text/css" href="/css/form.css">
 
 <form class="login" method="POST" action="/login">
-  
+
   <fieldset>
-    
+
   	<legend class="legend">Login: Cognizance ILLUSHUN</legend>
-    
+
     <div class="input">
     	<input type="username" placeholder="Username" name="username" required />
     </div>
@@ -15,14 +15,13 @@
     	<input type="password" placeholder="Password" name="password" required />
     </div>
     <div class="input center-align" style="color: red;font-size: 15px">
-    	
       <%= msg %>
+    </div>
+    <div class="input center-align" style="font-size: 15px">
+      Not yet registered! <a href="/signup">Signup</a>
     </div>
     <button type="submit" class="submit"><i class="fa fa-long-arrow-right"></i></button>
     
   </fieldset>
   
-  <div class="feedback">
-Not yet registered! <a href="/signup">Signup</a>
-  </div>
 </form>
