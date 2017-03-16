@@ -33,3 +33,7 @@ CREATE TABLE map_users(
 	FOREIGN KEY (user_id) REFERENCES users(id),
 	FOREIGN KEY (question_id) REFERENCES question(id)
 );
+CREATE TABLE quiz_status(
+	status INT default 0,
+	user_id INT
+);

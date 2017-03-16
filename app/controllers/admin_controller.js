@@ -18,7 +18,6 @@ var upload = multer({ storage: storage });
 
 var exec = require('child_process').exec;
 exports.home = function(req,res){
-	if(req.session.user){
 		var query = 'SELECT role FROM users where id=${id}';
 		database.select(query,{id: req.session.user},function(result){
 			if(result[0].role === 'admin'){
@@ -31,9 +30,6 @@ exports.home = function(req,res){
 			}
 
 		});
-	}else{
-		res.redirect('/login');
-	}
 }
 exports.create_post = function(req,res){
 	const results = [];
@@ -78,4 +74,26 @@ exports.create_post = function(req,res){
 			res.redirect('/admin');
 		}
 	}
+}
+
+exports.quiz_status = function(req,res){
+	database.select_one('select * from quiz_status where user_id=${user_id}',{user_id: req.session.user},function(result){
+		if(result){
+			if(req.body.status == 'start'){
+				database.update('UPDATE quiz_status SET status=1 WHERE user_id=$1', [req.session.user]);
+				res.redirect('/admin');
+			}else{
+				database.update('UPDATE quiz_status SET status=0 WHERE user_id=$1', [req.session.user]);
+				res.redirect('/admin');
+			}
+		}else{
+			if(req.body.status == 'start'){
+				database.insert('INSERT INTO quiz_status(user_id, status) VALUES(${user_id}, ${status})', {user_id: req.session.user, status: 1});
+				res.redirect('/admin');
+			}else{
+				database.insert('INSERT INTO quiz_status(user_id, status) VALUES(${user_id}, ${status})', {user_id: req.session.user, status: 0});
+				res.redirect('/admin');
+			}
+		}
+	});
 }

@@ -16,6 +16,7 @@ exports.create = function(req,res){
 			url: process.env.COGNIID_CHECK_ROUTE + data.username,
 			method: 'GET'
 		};
+		console.log(options);
 		request(options, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 				if(body == 401){

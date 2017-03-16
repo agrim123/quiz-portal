@@ -8,6 +8,20 @@
 			<a href="/logout" class="btn btn-info">Logout</a>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-sm-6">
+			<form action="/start_quiz" method="post">
+				<input name="status" value="start" hidden>
+				<button type="submit">Start Quiz</button>
+			</form>
+		</div>
+		<div class="col-sm-6">
+			<form action="/end_quiz" method="post">
+				<input name="status" value="end" hidden>
+				<button type="submit">End Quiz</button>
+			</form>
+		</div>
+	</div>
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-md-offset-1 col-md-6">
 			<form class="form-horizontal" action="/admin" method="post" id="post_form" enctype="multipart/form-data">
@@ -18,7 +32,7 @@
 				</div>
 				<div class="form-group col-md-12">
 					<textarea id="editor" class="form-control" rows="3" name="hint">
-					Hint Here!!
+						Hint Here!!
 					</textarea>
 				</div>
 				<div class="form-group col-md-6">
@@ -40,7 +54,7 @@
 			</form>
 		</div>
 	</div>	
- <h3>All Questions</h3>
+	<h3>All Questions</h3>
 	<table id="myTable" class="table table-striped table-bordered" style="table-layout: fixed;word-wrap: break-word;">
 		<thead>
 			<tr>

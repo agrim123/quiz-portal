@@ -1,31 +1,46 @@
 var express = require('express');
 var router = express.Router();
+var database = require('../app//models/database');
 var index = require('../app/controllers/index_controller');
 var users = require('../app/controllers/users_controller');
 var admin = require('../app/controllers/admin_controller');
 var sessions = require('../app/controllers/sessions_controller');
 var pg = require('pg');
+
 var dotenv = require('dotenv');
 dotenv.load();
-var cloudinary = require('cloudinary');
+
 var multer  = require('multer')
 var upload = multer({ dest: 'app/uploads/' });
-cloudinary.config({ 
-	cloud_name: process.env.CLOUD_NAME, 
-	api_key: process.env.API_KEY, 
-	api_secret: process.env.API_SECRET 
-});
+
+function isadmin(req,res,next){
+	if(req.session.user){
+		database.select('select role from users where id=${id}',{id: req.session.user},function(result){
+			if(result[0].role == 'admin'){
+				return next();
+			}else{
+				res.redirect('/login');
+			}
+		});
+	}else{
+		res.redirect('/login');
+	}
+}
+
 router.get('/',index.home);
-router.get('/admin',admin.home);
+router.get('/admin',isadmin, admin.home);
+router.post('/admin', isadmin, upload.any('image'),admin.create_post);
+router.post('/check',index.check);
+router.get('/leaderboard',index.leaderboard);
+router.get('/image/:name', index.serve_file);
+
 router.get('/login',sessions.login);
 router.post('/login',sessions.login_user);
 router.get('/logout',sessions.logout);
-router.post('/check',index.check);
-router.get('/leaderboard',index.leaderboard);
-//enable if and only if forgot password otherwise it is a potential backdoor in the site
 router.get('/signup',sessions.signup);
 router.post('/signup',users.create);
 
-router.post('/admin', upload.any('image'),admin.create_post);
-router.get('/image/:name', index.serve_file);
+router.post('/start_quiz',isadmin, admin.quiz_status);
+router.post('/end_quiz', isadmin,admin.quiz_status);
+
 module.exports = router;
