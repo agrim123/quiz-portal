@@ -39,5 +39,5 @@ CREATE TABLE quiz_status(
 );
 CREATE TABLE answers(
 	answer VARCHAR(500),
-	user_id INT
+	user_id VARCHAR(20)
 );
