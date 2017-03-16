@@ -34,8 +34,8 @@ $('document').ready(function () {
 			$('.submit').removeClass('submit');
 			$('#form-messages').html('');
 			var data = {
-				question_id: $('.active #id').val(),
-				answer: $(".active #answer").val()
+				question_id: $('#question_id').val(),
+				answer: $("#answer").val()
 			}
 			if(!data.answer){
 				$('#form-messages').html('');
@@ -49,8 +49,8 @@ $('document').ready(function () {
 		$(this).removeClass('submit');
 		$('#form-messages').html('');
 		var data = {
-			question_id: $('.active #id').val(),
-			answer: $(".active #answer").val()
+			question_id: $('#question_id').val(),
+			answer: $("#answer").val()
 		}
 		if(!data.answer){
 			$('#form-messages').html('');
@@ -65,13 +65,7 @@ function check_answer(data){
 		method: 'POST',
 		url: '/check',
 		data: JSON.stringify(data),
-		contentType: 'application/json'/*,
-		beforeSend: function() {
-			$("#question_loader").css("display","block");
-		},
-		complete: function() {
-			$("#question_loader").css("display","none");
-		}*/
+		contentType: 'application/json'
 	})
 	.done(function(response) {
 		if(response === "200"){
@@ -85,6 +79,8 @@ function check_answer(data){
 			$('#form-messages').html('').append("Please donot include special character in answer.");
 		}else if(response === "204"){
 			$('#form-messages').html('').append("Your answer is incorrect!");
+		}else if(response === "205"){
+			$('#form-messages').html('').append("Quiz has either not yet started or has ended!");
 		}else{
 			$('#form-messages').html('').append("Unknown Error please refresh to continue..");
 		}
