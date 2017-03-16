@@ -2,6 +2,9 @@ var pg = require('pg');
 var user_helper = require('../helpers/users_helper');
 var database = require('../models/database');
 var request = require('request');
+var dotenv = require('dotenv');
+dotenv.load();
+
 exports.create = function(req,res){
 	const data = {
 		username:req.body.cogniid,
@@ -10,7 +13,7 @@ exports.create = function(req,res){
 	};
 	if(data.username.match('cogni')){
 		var options = {
-			url: 'http://localhost:8000/check_cogni_id/' + data.username,
+			url: process.env.COGNIID_CHECK_ROUTE + data.username,
 			method: 'GET'
 		};
 		request(options, function (error, response, body) {
