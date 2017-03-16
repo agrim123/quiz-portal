@@ -37,3 +37,7 @@ CREATE TABLE quiz_status(
 	status INT default 0,
 	user_id INT
 );
+CREATE TABLE answers(
+	answer VARCHAR(500),
+	user_id INT
+);
