@@ -31,7 +31,8 @@ CREATE TABLE map_users(
 	question_id INT,
 	solved boolean default FALSE,
 	FOREIGN KEY (user_id) REFERENCES users(id),
-	FOREIGN KEY (question_id) REFERENCES question(id)
+	FOREIGN KEY (question_id) REFERENCES question(id),
+	published_on timestamp default current_timestamp
 );
 CREATE TABLE quiz_status(
 	status INT default 0,

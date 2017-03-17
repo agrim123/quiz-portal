@@ -60,11 +60,11 @@ exports.check = function(req,res){
 						database.insert('INSERT INTO answers(user_id,answer,question_id) VALUES(${user_id},${answer},${question_id})',{user_id: req.session.username, answer: req.body.answer,question_id: question_id});
 						var query = 'select correct_answer from question where id=${id}';
 						var data = {id: question_id};
-						var map_data = {user_id: req.session.user,question_id:question_id,solved:true};
+						var map_data = {user_id: req.session.user,question_id:question_id,solved:true, published_on: new Date()};
 						database.select_one(query,data,function(results){
 							if(results.correct_answer === req.body.answer){
 								database.update('UPDATE users SET score=score+1 WHERE id=$1', [req.session.user]);
-								database.insert('INSERT INTO map_users(user_id, question_id,solved) VALUES(${user_id}, ${question_id},${solved})', map_data);
+								database.insert('INSERT INTO map_users(user_id, question_id,solved,published_on) VALUES(${user_id}, ${question_id},${solved},${published_on})', map_data);
 								res.writeHead(200, {'Content-Type': 'text/html'});
 								res.end("200");
 							}else{
