@@ -100,3 +100,7 @@ exports.leaderboard = function(req,res){
 exports.wait = function(req,res){
 	res.send('Quiz has ended or not yet started!');
 }
+
+exports.rules = function(req,res){
+	res.render('pages/rules');
+}

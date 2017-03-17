@@ -23,6 +23,14 @@ exports.home = function(req,res){
 		res.render('pages/admin',{questions:results,message:''});
 	});
 }
+
+exports.answers = function(req,res){
+	var query = 'SELECT * FROM answers';
+	database.select(query,true,function(results){
+		res.render('pages/answers',{answers:results});
+	});
+}
+
 exports.create_post = function(req,res){
 	const results = [];
 	if(req.body.statement == '' || req.body.correct_answer == '') {

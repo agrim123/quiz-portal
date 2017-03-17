@@ -5,14 +5,16 @@
 
   <fieldset>
 
-  	<legend class="legend">Login: Cognizance ILLUSHUN</legend>
+    <legend class="legend">Login: Cognizance ILLUSHUN</legend>
+    <div class="input">
+      Please use CogniID to login<br/>(If you are not having one please register at <a href="https://cognizance.org.in" target="_blank">Cognizance</a>)
+    </div>
+    <div class="input">
+      <input type="username" placeholder="Cogni Id" name="username" required />
+    </div>
 
     <div class="input">
-    	<input type="username" placeholder="Cogni Id" name="username" required />
-    </div>
-    
-    <div class="input">
-    	<input type="password" placeholder="Password" name="password" required />
+      <input type="password" placeholder="Password" name="password" required />
     </div>
     <div class="input center-align" style="color: red;font-size: 15px">
       <%= msg %>
@@ -21,7 +23,7 @@
       Not yet registered! <a href="/signup">Signup</a>
     </div>
     <button type="submit" class="submit"><i class="fa fa-long-arrow-right"></i></button>
-    
+
   </fieldset>
-  
+
 </form>

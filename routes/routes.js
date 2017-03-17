@@ -35,6 +35,7 @@ function isadmin(req,res,next){
 
 router.get('/', index.home);
 router.get('/admin', isadmin, admin.home);
+router.get('/answers', isadmin, admin.answers);
 router.post('/admin', isadmin, upload.any('image'),admin.create_post);
 router.post('/check', isloggedin, index.check);
 router.get('/leaderboard', index.leaderboard);
@@ -45,6 +46,8 @@ router.post('/login', sessions.login_user);
 router.get('/logout', sessions.logout);
 router.get('/signup', sessions.signup);
 router.post('/signup', users.create);
+
+router.get('/rules', index.rules);
 
 router.post('/start_quiz', isadmin, admin.quiz_status);
 router.post('/end_quiz', isadmin, admin.quiz_status);
