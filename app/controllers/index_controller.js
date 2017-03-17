@@ -38,7 +38,7 @@ exports.home = function(req,res){
 			}
 		});
 	}else{
-		res.redirect('/login');
+		res.redirect('/signup');
 	}
 }
 exports.serve_file = function(req,res) {
