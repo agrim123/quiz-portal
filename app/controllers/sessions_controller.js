@@ -31,7 +31,7 @@ exports.login_user = function(req,res){
 					res.end();
 				});
 			}else{
-				res.render('pages/login',{msg: "no no"});
+				res.render('pages/login',{msg: "Please enter correct credentials!"});
 			}
 		}
 	});

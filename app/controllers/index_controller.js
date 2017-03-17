@@ -32,7 +32,7 @@ exports.home = function(req,res){
 					}
 				});
 			}else if(result.status == 0){
-				res.render('pages/index',{question: [],message: 'Quiz has not yet started!',cogniid: req.session.username});
+				res.render('pages/index',{question: [],message: 'Quiz has ended or not yet started!',cogniid: req.session.username});
 			}else{
 				res.redirect('/login');
 			}
