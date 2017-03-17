@@ -2,7 +2,7 @@
 <div class="navbar navbar-default">
 	<div class="container">
 		<!-- <a href="#" class="navbar-brand"> <img src="/images/logo.png" style="width: 6%"> </a> -->
-		<a href="https://cognizance.org.in/" class="navbar-brand"> COGNIZANCE |ILLUSHUN</a>
+		<a href="/" class="navbar-brand"> COGNIZANCE | ILLUSHUN</a>
 		<p class="h4 text4"><% if(question.length !=0 ){ %> <%= 'Level ' + (question.id -1 )%>!!<% }else{ %>&nbsp; <% } %>
 			<button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
 				<span class="icon-bar"></span>
@@ -12,7 +12,7 @@
 			</button>
 			<div class = "collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
-					<!-- <li class="text5"><a href="/rules">Rules</a></li> -->
+					<li class="text5"><a href="/rules">Rules</a></li>
 					<li class="active text5"><button type="button" class="navbar-btn btn-primary btn pull-right button" data-toggle="modal" data-target=".bs-example-modal-lg" id="leaderboard">Leaderboard</button></li>
 					<li class="active text5"><a href="/logout"> QUIT QUIZ </a></li>
 				</ul>
