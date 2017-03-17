@@ -62,7 +62,7 @@ exports.create_post = function(req,res){
 				image_url_5:'',
 				hint: req.body.hint
 			};
-			database.insert('INSERT INTO question(statement, correct_answer, published_on, image_url, hint) VALUES(${statement},  ${correct_answer}, ${published_on}, ${image_url}, ${hint})', data); 
+			database.insert('INSERT INTO question(statement, correct_answer, published_on, image_url_1,image_url_2,image_url_3,image_url_4,image_url_5, hint) VALUES(${statement},  ${correct_answer}, ${published_on}, ${image_url_1},${image_url_2},${image_url_3},${image_url_4},${image_url_5}, ${hint})', data); 
 			res.redirect('/admin');
 		}
 	}
