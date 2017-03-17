@@ -24,7 +24,7 @@ $('document').ready(function () {
 			for(i=0;i<response.length;i++){
 				$(".leaderboard").append('\
 					<div class="row" style="padding:10px"><div class="col-sm-4 col-sm-offset-3">' + response[i].username + '</div>\
-					<div class="col-sm-3">Level ' + response[i].score + '</div></div>\
+					<div class="col-sm-3">Level ' + response[i].score + 1 + '</div></div>\
 					');
 			}
 		});

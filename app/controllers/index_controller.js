@@ -57,7 +57,7 @@ exports.check = function(req,res){
 						res.writeHead(200, {'Content-Type': 'text/html'});
 						res.end("201");
 					}else{
-						database.insert('INSERT INTO answers(user_id,answer) VALUES(${user_id},${answer})',{user_id: req.session.username, answer: req.body.answer});
+						database.insert('INSERT INTO answers(user_id,answer,question_id) VALUES(${user_id},${answer},${question_id})',{user_id: req.session.username, answer: req.body.answer,question_id: question_id});
 						var query = 'select correct_answer from question where id=${id}';
 						var data = {id: question_id};
 						var map_data = {user_id: req.session.user,question_id:question_id,solved:true};
