@@ -4,7 +4,7 @@ var posts= {};
 var path = require('path');
 exports.home = function(req,res) {
 	if(req.session.user){
-		database.select_one('select status from quiz_status',true,function(result){
+		database.select_one('select status from quiz_status', true, function(result){
 			if(result.status == 1){
 				var user_id = req.session.user;
 				var query = 'select * from map_users where user_id=${user_id} order by question_id';

@@ -26,3 +26,7 @@ Build on nodejs uses PostgreSQL database.
 * https://expressjs.com/en/advanced/best-practice-security.html 
 * https://blog.risingstack.com/node-js-security-checklist/
 * https://github.com/expressjs/csurf
+
+### For best performance ###
+
+* https://expressjs.com/en/advanced/best-practice-performance.html
