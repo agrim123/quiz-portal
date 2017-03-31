@@ -2,8 +2,10 @@ var pgp = require('pg-promise')();
 var dotenv = require('dotenv');
 dotenv.load();
 var db = pgp(process.env.DATABASE_URL);
+
 exports.url = process.env.DATABASE_URL;
-exports.select = function(query,data,callback){
+
+exports.select = function(query,data,callback) {
 	db.any(query,data)
 	.then(function (result) {
 		callback(result);
@@ -12,7 +14,8 @@ exports.select = function(query,data,callback){
 		console.log('ERROR:', error)
 	})
 }
-exports.select_one = function(query,data,callback){
+
+exports.select_one = function(query,data,callback) {
 	db.oneOrNone(query,data)
 	.then(function (result) {
 		callback(result);
@@ -21,7 +24,8 @@ exports.select_one = function(query,data,callback){
 		console.log('ERROR:', error)
 	})
 }
-exports.insert = function(query,data){
+
+exports.insert = function(query,data) {
 
 	db.none(query,data)
 	.then(function () {
@@ -31,7 +35,8 @@ exports.insert = function(query,data){
 		console.log('ERROR:', error)
 	})
 }
-exports.update = function(query,data){
+
+exports.update = function(query,data) {
 	db.none(query,data)
 	.then(function () {
 

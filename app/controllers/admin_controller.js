@@ -1,7 +1,6 @@
 var database = require('../models/database');
 var dotenv = require('dotenv');
 dotenv.load();
-var cloudinary = require('cloudinary');
 
 var multer  = require('multer');
 var storage = multer.diskStorage({
@@ -14,24 +13,26 @@ var storage = multer.diskStorage({
 		});
 	}
 });
+
 var upload = multer({ storage: storage });
 
 var exec = require('child_process').exec;
-exports.home = function(req,res){
+
+exports.home = function(req,res) {
 	var query = 'SELECT * FROM question';
 	database.select(query,true,function(results){
 		res.render('pages/admin',{questions:results,message:''});
 	});
 }
 
-exports.answers = function(req,res){
+exports.answers = function(req,res) {
 	var query = 'SELECT * FROM answers';
 	database.select(query,true,function(results){
 		res.render('pages/answers',{answers:results});
 	});
 }
 
-exports.create_post = function(req,res){
+exports.create_post = function(req,res) {
 	const results = [];
 	if(req.body.statement == '' || req.body.correct_answer == '') {
 		var query = 'SELECT * FROM question';
@@ -55,7 +56,6 @@ exports.create_post = function(req,res){
 				image_url_5:images[4],
 				hint: req.body.hint
 			};
-			console.log(data);
 			database.insert('INSERT INTO question(statement, correct_answer, published_on, image_url_1,image_url_2,image_url_3,image_url_4,image_url_5, hint) VALUES(${statement},  ${correct_answer}, ${published_on}, ${image_url_1},${image_url_2},${image_url_3},${image_url_4},${image_url_5}, ${hint})', data); 
 			res.redirect('/admin');
 		}else{
@@ -76,7 +76,7 @@ exports.create_post = function(req,res){
 	}
 }
 
-exports.quiz_status = function(req,res){
+exports.quiz_status = function(req,res) {
 	database.select_one('select * from quiz_status where user_id=${user_id}',{user_id: req.session.user},function(result){
 		if(result){
 			if(req.body.status == 'start'){

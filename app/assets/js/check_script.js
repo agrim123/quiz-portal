@@ -86,6 +86,11 @@ function check_answer(data){
 			$('#form-messages').html('').append("Your answer is incorrect!");
 		}else if(response === "205"){
 			$('#form-messages').html('').append("Quiz has either not yet started or has ended!");
+		}else if(response === "206"){
+			$('#form-messages').html('').append("Please solve previous questions first! Redircting you to correct question...");
+			setTimeout(function(){
+				location.reload();
+			},2000);
 		}else{
 			$('#form-messages').html('').append("Unknown Error please refresh to continue..");
 		}

@@ -1,21 +1,24 @@
 var database = require('../models/database');
 var user_helper = require('../helpers/users_helper');
 var database = require('../models/database');
-exports.signup = function(req,res){
+
+exports.signup = function(req,res) {
 	if(req.session.user){
 		res.redirect('/admin');
 	}else{
 		res.render('pages/signup', { title: 'Cognizance IITR',message: ''});
 	}
 }
-exports.login = function(req,res){
+
+exports.login = function(req,res) {
 	if(req.session.user){
 		res.redirect('/');
 	}else{
 		res.render('pages/login',{title:'Cognizance IITR',msg:""});
 	}
 }
-exports.login_user = function(req,res){
+
+exports.login_user = function(req,res) {
 	var query = 'SELECT * from users where username=${username}';
 	var data = {username: req.body.username};
 	database.select_one(query,data,function(user){
@@ -36,7 +39,8 @@ exports.login_user = function(req,res){
 		}
 	});
 }
-exports.logout = function(req,res){
+
+exports.logout = function(req,res) {
 	req.session.destroy(function(){
 		res.redirect('/login');
 	});

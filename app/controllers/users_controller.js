@@ -5,7 +5,7 @@ var request = require('request');
 var dotenv = require('dotenv');
 dotenv.load();
 
-exports.create = function(req,res){
+exports.create = function(req,res) {
 	const data = {
 		username:req.body.cogniid,
 		password:user_helper.hashpassword(req.body.password),
@@ -16,7 +16,6 @@ exports.create = function(req,res){
 			url: process.env.COGNIID_CHECK_ROUTE + data.username,
 			method: 'GET'
 		};
-		console.log(options);
 		request(options, function (error, response, body) {
 			if (!error && response.statusCode == 200) {
 				if(body == 401){
