@@ -1,3 +1,4 @@
+var compression = require('compression');
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -7,6 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/routes');
 
 var app = express();
+app.use(compression());
 require('dotenv').config();
 
 // view engine setup
