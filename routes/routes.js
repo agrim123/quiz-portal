@@ -1,13 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var database = require('../app//models/database');
+
 var index = require('../app/controllers/index_controller');
 var users = require('../app/controllers/users_controller');
 var admin = require('../app/controllers/admin_controller');
 var sessions = require('../app/controllers/sessions_controller');
 var isLoggedIn = require('../app/middlewares/login_middleware');
 var isAdmin = require('../app/middlewares/admin_middleware');
-var pg = require('pg');
 
 var dotenv = require('dotenv');
 dotenv.load();
