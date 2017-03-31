@@ -19,4 +19,10 @@ Build on nodejs uses PostgreSQL database.
 
 ### For Dev ###
 
-* run `$ npm run watch` to watch for file changes (reduces pain of restarting server) 
+* run `$ npm run watch` to watch for file changes (reduces pain of restarting server)
+
+### For Security vulnerabilities in dependencies ###
+
+* https://expressjs.com/en/advanced/best-practice-security.html 
+* https://blog.risingstack.com/node-js-security-checklist/
+* https://github.com/expressjs/csurf
