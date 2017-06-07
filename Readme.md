@@ -1,4 +1,4 @@
-##Quiz
+# Quiz Portal
 
 Build on nodejs uses PostgreSQL database.
 > NodeJS is awesome!!  
