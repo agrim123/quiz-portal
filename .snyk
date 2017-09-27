@@ -8,3 +8,6 @@ patch:
         patched: '2017-05-24T08:38:05.009Z'
     - bcrypt > node-pre-gyp > tar-pack > debug > ms:
         patched: '2017-05-24T08:38:05.009Z'
+  'npm:debug:20170905':
+    - method-override > debug:
+        patched: '2017-09-27T08:38:10.089Z'

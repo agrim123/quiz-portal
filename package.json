@@ -27,7 +27,7 @@
     "forever": "^0.15.3",
     "fs": "0.0.1-security",
     "method-override": "^2.3.7",
-    "morgan": "~1.8.2",
+    "morgan": "~1.9.0",
     "multer": "^1.2.1",
     "multer-storage-cloudinary": "^2.2.1",
     "nodemon": "^1.11.0",
@@ -39,7 +39,7 @@
     "request": "^2.81.0",
     "rmdir": "^1.2.0",
     "serve-favicon": "~2.4.3",
-    "snyk": "^1.30.1"
+    "snyk": "^1.41.1"
   },
   "snyk": true
 }
