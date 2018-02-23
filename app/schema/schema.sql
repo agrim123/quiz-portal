@@ -21,7 +21,7 @@ ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFE
 CREATE TABLE users(
 	id SERIAL PRIMARY KEY,
 	username VARCHAR(100) NOT NULL,
-	password varchar(80) not null,
+	oneTimeHash varchar(80),
 	created_on timestamp default current_timestamp,
 	score INT default 0,
 	role VARCHAR(10)

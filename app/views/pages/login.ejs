@@ -1,29 +1,31 @@
 <% include ../partials/head %>
-<link rel="stylesheet" type="text/css" href="/css/form.css">
-
+<link rel="stylesheet" type="text/css" href="/css/form.css">>
 <form class="login" method="POST" action="/login">
-
-  <fieldset>
-
     <legend class="legend">Login: Cognizance ILLUSHUN</legend>
     <div class="input">
       Please use CogniID to login<br/>(If you are not having one please register at <a href="https://cognizance.org.in" target="_blank">Cognizance</a>)
     </div>
-    <div class="input">
-      <input type="username" placeholder="Cogni Id" name="username" required />
-    </div>
-
-    <div class="input">
+    <%if (!oth) { %>
+      <div class="input">
+        <input type="text" class="id" placeholder="Cogni Id" name="cogniId" required />
+      </div>
+    <% } %>
+    <%if (oth) { %>
+      <div class="input">
+        <input type="text" name="cogniId" value=<%= cogniId %> readonly />
+      </div>
+      <div class="input">
+        <input type="password" class="id" placeholder="One Time Hash" name="hash" required />
+      </div>
+    <% } %>
+    <!-- <div class="input">
       <input type="password" placeholder="Password" name="password" required />
-    </div>
+    </div> -->
     <div class="input center-align" style="color: red;font-size: 15px">
       <%= msg %>
     </div>
     <div class="input" style="font-size: 15px; text-align: right;">
-      Not yet registered! <a href="/signup">Signup</a>
+      <a href="/login">reset</a>
     </div>
     <button type="submit" class="submit"><i class="fa fa-long-arrow-right"></i></button>
-
-  </fieldset>
-
 </form>
