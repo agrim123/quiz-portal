@@ -38,7 +38,7 @@ exports.home = function(req,res) {
 			}
 		})
 	}else{
-		res.redirect('/signup')
+		res.redirect('/login')
 	}
 }
 

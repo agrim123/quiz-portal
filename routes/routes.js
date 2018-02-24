@@ -25,8 +25,8 @@ router.get('/image/:name', index.serve_file)
 router.get('/login', sessions.login)
 router.post('/login', sessions.login_user)
 router.get('/logout', sessions.logout)
-router.get('/signup', sessions.signup)
-router.post('/signup', users.create)
+// router.get('/signup', sessions.signup)
+// router.post('/signup', users.create)
 
 router.get('/rules', index.rules)
 
