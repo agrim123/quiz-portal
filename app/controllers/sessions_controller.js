@@ -28,7 +28,7 @@ exports.login_user = function(req,res) {
 	let { cogniId } = req.body
 	if (cogniId && !hash) {
 		var options = {
-			url: `${process.env.API_DOMAIN}api/checkCogniId/${req.body.cogniId}`,
+			url: `${process.env.COGNIID_CHECK_ROUTE}${req.body.cogniId}`,
 			method: 'GET'
 		}
 		request(options, function (error, response, body) {
@@ -57,32 +57,40 @@ exports.login_user = function(req,res) {
 				var query = 'SELECT * from users where username=${username}'
 				var data = {username: cogniId}
 				database.select_one(query,data,function(user){
-					if(user === null){
+					if(user === null) {
 						const data = {
 							username: cogniId,
 							onetimehash: hash,
 							created_on:new Date,
-							role: 'admin',
+							role: 'user',
 						}
 						pg.connect(database.url, (err, client, done) => {
 							if(err) {
 								done()
 								return res.status(500).json({success: false, data: err})
 							}
-							const query = client.query('INSERT INTO users(username, onetimehash,created_on,role) values($1, $2,$3,$4)',
-								[data.username, data.onetimehash,data.created_on,'admin'])
-							query.on('end', () => {
+							const query = client.query('INSERT INTO users(username, onetimehash,created_on,role) values($1, $2,$3,$4) RETURNING id,username',
+								[data.username, data.onetimehash,data.created_on,'user'])
+							query.on('end', (result) => {
+								const a = result.rows[0]
+								req.session.regenerate(function(){
+									req.session.user = a.id
+									req.session.username = a.username
+									req.session.msg = 'Authenticated as '+ cogniId
+									res.writeHead(302, {location: '/'})
+									res.end()
+								})
 								done()
 							})
 						})
-					}	else{
-							req.session.regenerate(function(){
-								req.session.user = user.id
-								req.session.username = user.username
-								req.session.msg = 'Authenticated as '+ cogniId
-								res.writeHead(302, {location: '/'})
-								res.end()
-							})
+					} else {
+						req.session.regenerate(function(){
+							req.session.user = user.id
+							req.session.username = user.username
+							req.session.msg = 'Authenticated as '+ cogniId
+							res.writeHead(302, {location: '/'})
+							res.end()
+						})
 					}
 				})
 			} else {

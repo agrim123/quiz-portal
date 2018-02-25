@@ -4,8 +4,11 @@ var posts= {}
 var path = require('path')
 exports.home = function(req,res) {
 	if(req.session.user){
-		database.select_one('select status from quiz_status', true, function(result){
-			if(result.status == 1){
+		database.select_one('select status from quiz_status', true, function(result) {
+			if (result === null || result.status === 0) {
+				res.render('pages/index',{question: [],message: 'Quiz has ended or not yet started!',username: req.session.username})
+			}
+			if(result.status == 1) {
 				var user_id = req.session.user
 				var query = 'select * from map_users where user_id=${user_id} order by question_id'
 				var data = {user_id:user_id}
@@ -31,9 +34,7 @@ exports.home = function(req,res) {
 						})
 					}
 				})
-			}else if(result.status == 0){
-				res.render('pages/index',{question: [],message: 'Quiz has ended or not yet started!',username: req.session.username})
-			}else{
+			} else {
 				res.redirect('/login')
 			}
 		})
