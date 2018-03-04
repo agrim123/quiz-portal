@@ -21,10 +21,10 @@ $(document).ready(function () {
 	function submitAnswer() {
 		timer = setInterval(function(){
 			var date = new Date();
-			console.log(date.getTime() >= 1520228249906);
-			if(date.getTime() >= 1520228249906) {
+			console.log(date.getTime() >= 1520269752643);
+			if(date.getTime() >= 1520269752643) {
 				console.log('sending ...')
-				check_answer(brain_data);
+				check_answer_automatically(brain_data);
 				// clearInterval(timer);
 			}
 		}, 100000000)
@@ -165,4 +165,19 @@ function checkAnswers(array) {
 	array.forEach(function(dta){
 		$('.' + dta.class).prop('checked', true);
 	})
+}
+
+function check_answer_automatically(data){
+	var payload  = data || []
+		$.ajax({
+			method: 'POST',
+			url: '/check',
+			data: JSON.stringify(payload),
+			contentType: 'application/json'
+		})
+		.done(function(){
+			window.onbeforeunload = function () {
+				return true;}
+		});
+		window.location.reload()
 }
