@@ -31,7 +31,7 @@ exports.quiz = function(req,res){
 		database.select(queryStatus,data,function(result){
 		console.log(result[0]);
 			
-		if(!result[0] && !result[0].open) {
+		if(result[0] && !result[0].open) {
 			res.render('pages/quiz',{questions: [],title: process.env.QUIZ_NAME,message: 'Quiz Has Not started or Ended'});
 			return;
 		}
