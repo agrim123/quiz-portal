@@ -8,10 +8,22 @@
 			<a href="/logout" class="btn btn-info">Logout</a>
 		</div>
 	</div>
+	<div class="col-sm-6">
+		<form action="/start_quiz" method="post">
+			<input name="status" value="start" hidden>
+			<button type="submit">Start Quiz</button>
+		</form>
+	</div>
+	<div class="col-sm-6">
+		<form action="/end_quiz" method="post">
+			<input name="status" value="end" hidden>
+			<button type="submit">End Quiz</button>
+		</form>
+	</div>
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-md-offset-1 col-md-6">
-			<!-- <form class="form-horizontal" action="/sangram_iitr_admin_panel_2017_yo" method="post" id="post_form"> -->
-				 <form class="form-horizontal" action="/sangram_iitr_admin_panel_2017_yo" method="post" id="post_form" enctype="multipart/form-data"> 
+			<!-- <form class="form-horizontal" action="/admin/dashboard" method="post" id="post_form"> -->
+				 <form class="form-horizontal" action="/admin/dashboard" method="post" id="post_form" enctype="multipart/form-data"> 
 				<legend>Upload your article</legend>
 				<div class="form-group col-md-12">
 					<textarea id="editor" class="form-control" rows="3" placeholder="Paste your article here..." name="statement">
@@ -28,9 +40,9 @@
 							(please write the correct answer not the option!!!)
 						</div>
 					</div>
-				<div class="form-group col-md-6">
-					<input type="file" name="image" accept="image/*">
-				</div>
+					<div class="form-group col-md-6">
+						<input type="file" name="image" accept="image/*" multiple>
+					</div>
 				<div class="form-group">
 					<div class="col-sm-12">
 						<center><button type="submit" class="btn btn-default" style="position:relative;margin-right: 50px;">Upload</button></center>

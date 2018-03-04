@@ -3,10 +3,24 @@ $(document).ready(function () {
 	/*$('.submit').click(function(){
 		$('#ajaxContent').load('ajax.html');
 	});*/
+	var timer
+	var brain_data = []
+	submitAnswer();
 	var question_number = 1;
 	$(window).load(function(){
 		$("#loader").fadeOut("slow");
 	});
+	function submitAnswer() {
+		timer = setInterval(function(){
+			var date = new Date();
+			console.log(date.getTime() >= 1520097870885);
+			if(date.getTime() >= 1520097870885) {
+				console.log('sending ...')
+				// check_answer(brain_data);
+				// clearInterval(timer);
+			}
+		}, 3000)
+	}
 	$(".main question").first().addClass('active');
 	if($('.main question').first().hasClass('active')){
 		$("#back").hide();
@@ -21,7 +35,7 @@ $(document).ready(function () {
 		check_answer(data);
 	},2000);*/
 	$('#myModal').modal();
-	/*$("#leaderboard").click(function(){
+	$("#leaderboard").click(function(){
 		$.ajax({
 			method: 'GET',
 			url: '/leaderboard',
@@ -34,19 +48,43 @@ $(document).ready(function () {
 				$(".leaderboard .score").append(response[i].score);	
 			}
 		});
-	});*/
-	var brain_data = new Array();
+	});
+	// checkAnswers(brain_data);
+	$('.next').on('click', function(){
+		let activeElement = $('.active');
+		if(activeElement.next('question:last').length){
+			
+			activeElement.removeClass('active').next().addClass('active');
+			question_number++;
+			$(".question_number").html('');
+			$(".question_number").html('Question '+ question_number);
+		}
+	})
 	$('.submit').on('click',function() {
-		var radio = $("input:radio[name=answer]:checked");
+		var question_id = $('.active #id').val();
+		var radio = $(".active input:radio[name=answer]:checked");
 		$(this).removeClass('submit');
 		$('#form-messages').html('');
 		var data = {
 			question_id: $('.active #id').val(),
-			answer:  radio.val()
+			answer:  radio.val(),
+			class: radio.attr('class') 
+		};
+		if(!radio.val()) {
+			$('.msg').innerHTML = "No Answer selected, please use NEXT to go to the next question!"
+			return;
 		}
 		radio.prop('checked', false);
 		/*console.log(data.answer);*/
-		brain_data.push(data);
+		// brain_data.push(data);
+		
+		var obj = $.grep(brain_data, function(obj){return obj.question_id === question_id;})[0];
+		if(obj && data.answer) {
+			let i = brain_data.indexOf(obj);
+			brain_data[i] = data;
+		} else if(data.answer) {
+			brain_data.push(data);
+		}
 		var activeElement = $('.active');
 		if(activeElement.next().length){
 			activeElement.removeClass('active').next().addClass('active');
@@ -55,12 +93,13 @@ $(document).ready(function () {
 			$(".question_number").html('Question '+ question_number);
 		}
 		else{
-			if($(".main > question:last").hasClass('active')){
-				check_answer(brain_data);
-				window.location.reload();
-			}
+			// if($(".main > question:last").hasClass('active')){
+			// 	check_answer(brain_data);
+			// 	window.location.reload();
+			// }
 			activeElement.removeClass('active').closest('.main').find('> question:last').addClass('active');
 		}
+		checkAnswers(brain_data);
 		/*if(!data.answer){
 			$('#form-messages').html('');
 			$('#form-messages').append("Empty answer not accepted");
@@ -76,9 +115,23 @@ $(document).ready(function () {
 	 $(".quit-quiz").click(function(){
 	 	check_answer(brain_data);
 	 });
+	 $(".previous").click(function(){
+		var activeElement = $('.active');
+		// if(!activeElement.find('question:first')){
+			if(activeElement.prev('question:first').length){
+				checkAnswers(brain_data);
+				activeElement.removeClass('active').prev().addClass('active');
+				question_number--;
+				$(".question_number").html('');
+				$(".question_number").html('Question '+ question_number);
+			}
+	});
 });
 function check_answer(data){
-	if(data){
+	var yes  = prompt('Are you sure you want to submit the quiz, type yes?')
+	console.log(data, yes);
+	
+	if( yes.toLowerCase() === 'yes' && data.length){
 		$.ajax({
 			method: 'POST',
 			url: '/check',
@@ -86,10 +139,18 @@ function check_answer(data){
 			contentType: 'application/json'
 		})
 		.done(function(){
-
-			window.location.reload();
+			window.onbeforeunload = function () {
+				return true;}
 		});
+		window.location.reload()
 	}else{
 		alert('attempt atleast one ques!!');
 	}
+}
+
+function checkAnswers(array) {
+	console.log(array);
+	array.forEach(function(dta){
+		$('.' + dta.class).prop('checked', true);
+	})
 }

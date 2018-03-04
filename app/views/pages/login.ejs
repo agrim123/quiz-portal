@@ -1,33 +1,39 @@
 <% include ../partials/head %>
 <link rel="stylesheet" type="text/css" href="/css/form.css">
-
-<form class="login" method="POST" action="/login">
-  
-  <fieldset>
-    
-  	<legend class="legend">Login -> Kshitij</legend>
-    
-    <div class="input">
-    	<input type="username" placeholder="Username" name="username" required />
-      <span><i class="fa fa-envelope-o"></i></span>
-    </div>
-    
-    <div class="input">
-    	<input type="password" placeholder="Password" name="password" required />
-      <span><i class="fa fa-lock"></i></span>
-    </div>
-    <div class="input center-align" style="color: red;font-size: 15px">
-    	
-      <%= msg %>
-    </div>
-    <button type="submit" class="submit"><i class="fa fa-long-arrow-right"></i></button>
-    
-  </fieldset>
-  
-  <div class="feedback">
-  	login successful <br />
-    redirecting...
-  </div>
-  
-</form>
+<div class = "container">
+	<div class="wrapper">
+		<form action="" method="post" action="/login" name="Login_Form" class="form-signin">       
+		    <h3 class="form-signin-heading"><%= title %></h3>
+			  <hr class="colorgraph"><br>
+        <%if (!oth) { %>
+          <div class="input">
+            <input type="text" class="form-control" name="cogniId" placeholder="Cognizance ID" required="" autofocus="" />
+          </div>
+        <% } %>
+        <%if (oth) { %>
+          <input type="text"
+            class="form-control"
+            name="cogniId"
+            placeholder="Cognizance ID"
+            value=<%= cogniId %>
+            required=""
+            autofocus=""
+            readonly 
+          />
+          <input type="password" class="form-control" name="hash" placeholder="Password" required=""/>     		  
+        <% } %>
+        <!-- <div class="input">
+          <input type="password" placeholder="Password" name="password" required />
+        </div> -->
+			  <button class="btn btn-lg btn-primary btn-block"  name="Submit" value="Login" type="Submit">Login</button>  			
+        <div class="input center-align" style="color: red;font-size: 15px">
+          <%= msg %>
+        </div>
+        <a
+          style="float: right; font-size: 0.8em; color: grey; margin-top: 2px;"
+          href="/oth"
+        >What is OTH?</a>
+      </form>			
+	</div>
+</div>
 <script type="text/javascript" src="js/form.js"></script>
