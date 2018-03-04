@@ -1,4 +1,37 @@
 <% include ../partials/head %>
+<style>
+	.answer{
+		line-height: 2.5em;
+	}
+
+	#question{
+		margin-left: 2%;
+	}
+	.masthead {
+  min-height: 30rem;
+  position: relative;
+  display: table;
+  width: 100%;
+  height: auto;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("http://www.kinyu-z.net/data/wallpapers/133/1169957.jpg");
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@media (min-width: 992px) {
+  .masthead {
+    height: 100vh;
+  }
+  .masthead h1 {
+    font-size: 5.5rem;
+  }
+}
+
+
+</style>
 <div class="navbar navbar-inverse">
 	<div class="container">
 		<div class="col-md-3">
@@ -11,8 +44,11 @@
 			<div class = "collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
+							<% if(!message) {%>
+								<button type="button" class="btn-primary navabr-btn btn btn-info quit-quiz" >SUBMIT QUIZ</button>
+								<%}%>		
 						
-						<button type="button" class="btn-primary navabr-btn btn btn-info quit-quiz" >SUBMIT QUIZ</button>
+						<button type="button" class="btn-primary navabr-btn btn btn-danger logout" >LOGOUT</button>
 						
 					</li>
 				</ul>
@@ -32,62 +68,66 @@
 </div>
 <p style="color:#000" class="text-center"><b>Your progress will be lost on refreshing the page. Please do not refresh the page</b><br>Duration: 20 minutes<br>Quiz will only be submitted after you attempt the last question. To submit the quiz at any point of time, click the <b>Submit Quiz Button</b></p>
 
-<div class="container">
-	<%- message %>
-	<div class="main">
-		<% questions.forEach(function(question) { %>
-		<question id="question" class="question-<%= question.id %>">
-			<input id="id" style="display: none;" value="<%= question.id %>">
-			<div class="text-center text1">
-				<h2 class="question_number"></h2>
-			</div>
-			<div class="col-md-10 col-md-offset-1 border">
-				<div class="center-align">
-					<!-- <img id="question_loader" src="/images/ajax-loader.gif" style="display: none;"> -->
-				</div>
-				<div style="text-align: center;"><%- question.statement %></div>
-				<% if(question.image_url){ %>
-
-				<div style="text-align: center;"><img src="/image/<%= question.image_url %>" width="100%"></div>
-				<% } %>
-				<form class="form-inline form">
-					<!-- <div class="form-group" style="width: 100%">
-						<label class="sr-only" for="answer">Enter Answer</label>
-						<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
-					</div> -->
-					<div class="row answers">
-						<div class="col-md-12">
-							<input class="<%- question.id %>a" type="radio" id="answer" name="answer" value="<%- question.option_a %>"> <%- question.option_a %>
-						</div>
-						<div class="col-md-12">
-							<input class="<%- question.id %>b" type="radio" id="answer" name="answer" value="<%- question.option_b %>"> <%- question.option_b %>
-						</div>
-						<div class="col-md-12">
-							<input class="<%- question.id %>c" type="radio" id="answer" name="answer" value="<%- question.option_c %>"> <%- question.option_c %>  
-						</div>
-						<div class="col-md-12">
-							<input class="<%- question.id %>d" type="radio" id="answer" name="answer" value="<%- question.option_d %>"> <%- question.option_d %>  
-						</div>
+<div class="masthead">
+		<div class="container well">
+			<%- message %>
+			<div class="main">
+				<% questions.forEach(function(question) { %>
+				<question id="question" class="question-<%= question.id %>">
+					<input id="id" style="display: none;" value="<%= question.id %>">
+					<div class="text1">
+						<h2 class="question_number"></h2>
 					</div>
-
-					<div id="form-messages" style="color: red"></div>
-				</form>
-				<div class="form1">
-					<button href="#" class="btn-success btn button1 previous">
-						< PREVIOUS
-					</button>
-					<button href="#" class="btn-success btn button1 next">
-						NEXT >
-					</button>
-					<button href="#" class="btn-success btn button1 submit">
-						RECORD RESPONSE
-					</button>
-					<span class"msg" style="color:black"></span>
-				</div>	
+					<hr >
+					<div class=" border">
+						<div class="center-align">
+							<!-- <img id="question_loader" src="/images/ajax-loader.gif" style="display: none;"> -->
+						</div>
+						<b><%- question.statement %></b>
+						<hr >
+						<% if(question.image_url){ %>
+		
+						<div style="text-align: center;"><img src="/image/<%= question.image_url %>" width="100%"></div>
+						<% } %>
+						<form class="form-inline form">
+							<!-- <div class="form-group" style="width: 100%">
+								<label class="sr-only" for="answer">Enter Answer</label>
+								<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
+							</div> -->
+							<div class="row answers">
+								<div class="col-md-12 answer radio">
+									<input class="<%- question.id %>a" type="radio" id="answer" name="answer" value="<%- question.option_a %>"> <%- question.option_a %>
+								</div>
+								<div class="col-md-12 answer radio">
+									<input class="<%- question.id %>b" type="radio" id="answer" name="answer" value="<%- question.option_b %>"> <%- question.option_b %>
+								</div>
+								<div class="col-md-12 answer radio">
+									<input class="<%- question.id %>c" type="radio" id="answer" name="answer" value="<%- question.option_c %>"> <%- question.option_c %>  
+								</div>
+								<div class="col-md-12 answer radio">
+									<input class="<%- question.id %>d" type="radio" id="answer" name="answer" value="<%- question.option_d %>"> <%- question.option_d %>  
+								</div>
+							</div>
+		
+							<div id="form-messages" style="color: red"></div>
+						</form>
+						<div class="form1">
+							<ul class="pager">
+									<li><a class="button1 previous"  href="#">Previous</a></li>
+									<li><a class="button1 submit"  href="#">Next</a></li>
+								  </ul>
+							<span class"msg" style="color:black"></span>
+						</div>	
+					</div>
+				</question>
+				<% }); %>
+				<% if(!message) {%>
+				<question id="question" class="last">QUIZ HAS ENDED!
+						<button type="button" class="btn-primary navabr-btn btn btn-info quit-quiz" >SUBMIT QUIZ</button>
+				</question>
+				<%}%>
 			</div>
-		</question>
-		<% }); %>
-	</div>
+		</div>
 </div>
 <!-- <div class="navbar navbar-fixed-bottom">
 	<div class="container">

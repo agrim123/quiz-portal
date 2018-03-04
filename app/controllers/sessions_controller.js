@@ -127,7 +127,7 @@ exports.login_user = function(req,res) {
 					}
 				})
 			} else {
-				res.render('pages/login',{msg: response.body, oth: false})
+				res.render('pages/login',{msg: response.body, oth: false, title: process.env.QUIZ_NAME})
 			}
 		})
 	}

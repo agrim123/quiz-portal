@@ -10,6 +10,14 @@ $(document).ready(function () {
 	$(window).load(function(){
 		$("#loader").fadeOut("slow");
 	});
+	function showSolved() {
+		$('.solved').innerHTML = ""
+		console.log('solved');
+		
+		brain_data.map(data => {
+			$('.solved').append('<div>soloved</div>')
+		})
+	}
 	function submitAnswer() {
 		timer = setInterval(function(){
 			var date = new Date();
@@ -19,8 +27,9 @@ $(document).ready(function () {
 				check_answer(brain_data);
 				// clearInterval(timer);
 			}
-		}, 3000)
+		}, 100000000)
 	}
+	showSolved()
 	$(".main question").first().addClass('active');
 	if($('.main question').first().hasClass('active')){
 		$("#back").hide();
@@ -60,6 +69,9 @@ $(document).ready(function () {
 			$(".question_number").html('Question '+ question_number);
 		}
 	})
+	$('.logout').on('click', function(){
+		window.location = '/logout'
+	})
 	$('.submit').on('click',function() {
 		var question_id = $('.active #id').val();
 		var radio = $(".active input:radio[name=answer]:checked");
@@ -70,10 +82,10 @@ $(document).ready(function () {
 			answer:  radio.val(),
 			class: radio.attr('class') 
 		};
-		if(!radio.val()) {
-			$('.msg').innerHTML = "No Answer selected, please use NEXT to go to the next question!"
-			return;
-		}
+		// if(!radio.val()) {
+		// 	$('.msg').innerHTML = "No Answer selected, please use NEXT to go to the next question!"
+		// 	return;
+		// }
 		radio.prop('checked', false);
 		/*console.log(data.answer);*/
 		// brain_data.push(data);
