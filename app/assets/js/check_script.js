@@ -14,7 +14,7 @@ $(document).ready(function () {
 		timer = setInterval(function(){
 			var date = new Date();
 			console.log(date.getTime() >= 1520097870885);
-			if(date.getTime() >= 1520097870885) {
+			if(date.getTime() >= 1520228249906) {
 				console.log('sending ...')
 				check_answer(brain_data);
 				// clearInterval(timer);
