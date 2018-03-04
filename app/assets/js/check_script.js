@@ -13,7 +13,7 @@ $(document).ready(function () {
 	function submitAnswer() {
 		timer = setInterval(function(){
 			var date = new Date();
-			console.log(date.getTime() >= 1520097870885);
+			console.log(date.getTime() >= 1520228249906);
 			if(date.getTime() >= 1520228249906) {
 				console.log('sending ...')
 				check_answer(brain_data);
@@ -131,7 +131,7 @@ function check_answer(data){
 	var yes  = prompt('Are you sure you want to submit the quiz, type yes?')
 	console.log(data, yes);
 	
-	if( yes.toLowerCase() === 'yes' && data.length){
+	if(yes && yes.toLowerCase() === 'yes' && data.length){
 		$.ajax({
 			method: 'POST',
 			url: '/check',
