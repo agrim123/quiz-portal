@@ -20,7 +20,7 @@
             autofocus=""
             readonly 
           />
-          <input type="password" class="form-control" name="hash" placeholder="Password" required=""/>     		  
+          <input type="password" class="form-control" name="hash" placeholder="One Time Hash" required=""/>     		  
         <% } %>
         <!-- <div class="input">
           <input type="password" placeholder="Password" name="password" required />
@@ -29,10 +29,13 @@
         <div class="input center-align" style="color: red;font-size: 15px">
           <%= msg %>
         </div>
-        <a
+        <%if (oth) { %>
+          <a
           style="float: right; font-size: 0.8em; color: grey; margin-top: 2px;"
           href="/oth"
+          target="_blank"
         >What is OTH?</a>
+        <% } %>
       </form>			
 	</div>
 </div>

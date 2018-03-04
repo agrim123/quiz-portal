@@ -23,6 +23,7 @@ ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFE
 CREATE TABLE users(	
 	id SERIAL PRIMARY KEY,
 	username varchar(50),
+	role varchar(10),
 	created_on timestamp default current_timestamp
  );
 CREATE TABLE map_users(	
