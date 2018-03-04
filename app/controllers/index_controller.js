@@ -29,12 +29,13 @@ exports.quiz = function(req,res){
 		var queryStatus = 'select open from quiz_status';
 		var data = {user_id:user_id};
 		database.select(queryStatus,data,function(result){
-			console.log(result[0].open);
+		console.log(result[0]);
 			
-			if(!result[0].open) {
-				res.render('pages/quiz',{questions: [],title: process.env.QUIZ_NAME,message: 'Quiz Has Not started or Ended'});
-				return;
-			}
+		if(!result[0] && !result[0].open) {
+			res.render('pages/quiz',{questions: [],title: process.env.QUIZ_NAME,message: 'Quiz Has Not started or Ended'});
+			return;
+		}
+		
 		database.select(query,data,function(results){
 			if(results.length > 0){
 				res.render('pages/quiz',{questions: [], title: process.env.QUIZ_NAME,message: 'You have completed the quiz'});
