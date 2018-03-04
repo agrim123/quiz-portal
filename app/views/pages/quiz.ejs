@@ -1,18 +1,18 @@
 <% include ../partials/head %>
-<div class="navbar navbar-default">
+<div class="navbar navbar-inverse">
 	<div class="container">
 		<div class="col-md-3">
-			<a class="navbar-brand">SANGRAM | SPORTS QUIZ</a>
+			<a class="navbar-brand">QUIZ</a>
 		</div>
 		<div class="col-md-3">
-			<a class="navbar-brand">Olympics</a>
+			<a class="navbar-brand"><%= title %></a>
 		</div>
 		<div class="col-md-3 col-md-offset-3">
 			<div class = "collapse navbar-collapse navHeaderCollapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li>
 						
-						<button type="button" class="btn-primary btn btn-success quit-quiz" >SUBMIT QUIZ</button>
+						<button type="button" class="btn-primary navabr-btn btn btn-info quit-quiz" >SUBMIT QUIZ</button>
 						
 					</li>
 				</ul>
@@ -30,7 +30,8 @@
 	</div>
 </div>
 </div>
-<p style="color:#fff" class="text-center"><b>Your progress will be lost on refreshing the page. Please do not refresh the page</b><br>Duration: 20 minutes<br>Quiz will only be submitted after you attempt the last question. To submit the quiz at any point of time, click the <b>Submit Quiz Button</b></p>
+<p style="color:#000" class="text-center"><b>Your progress will be lost on refreshing the page. Please do not refresh the page</b><br>Duration: 20 minutes<br>Quiz will only be submitted after you attempt the last question. To submit the quiz at any point of time, click the <b>Submit Quiz Button</b></p>
+
 <div class="container">
 	<%- message %>
 	<div class="main">
@@ -47,33 +48,41 @@
 				<div style="text-align: center;"><%- question.statement %></div>
 				<% if(question.image_url){ %>
 
-				<div style="text-align: center;"><img src="<%= question.image_url %>" width="100%"></div>
+				<div style="text-align: center;"><img src="/image/<%= question.image_url %>" width="100%"></div>
 				<% } %>
 				<form class="form-inline form">
 					<!-- <div class="form-group" style="width: 100%">
 						<label class="sr-only" for="answer">Enter Answer</label>
 						<input id="answer" type="text" class="form-control col-md-1 box-shadow" style="outline;width: 100%" placeholder="Enter Answer" name="answer">
 					</div> -->
-					<div class="row">
+					<div class="row answers">
 						<div class="col-md-12">
-							<input type="radio" id="answer" name="answer" value="<%- question.option_a %>"> <%- question.option_a %>
+							<input class="<%- question.id %>a" type="radio" id="answer" name="answer" value="<%- question.option_a %>"> <%- question.option_a %>
 						</div>
 						<div class="col-md-12">
-							<input type="radio" id="answer" name="answer" value="<%- question.option_b %>"> <%- question.option_b %>
+							<input class="<%- question.id %>b" type="radio" id="answer" name="answer" value="<%- question.option_b %>"> <%- question.option_b %>
 						</div>
 						<div class="col-md-12">
-							<input type="radio" id="answer" name="answer" value="<%- question.option_c %>"> <%- question.option_c %>  
+							<input class="<%- question.id %>c" type="radio" id="answer" name="answer" value="<%- question.option_c %>"> <%- question.option_c %>  
 						</div>
 						<div class="col-md-12">
-							<input type="radio" id="answer" name="answer" value="<%- question.option_d %>"> <%- question.option_d %>  
+							<input class="<%- question.id %>d" type="radio" id="answer" name="answer" value="<%- question.option_d %>"> <%- question.option_d %>  
 						</div>
 					</div>
 
 					<div id="form-messages" style="color: red"></div>
 				</form>
 				<div class="form1">
-					<button href="#" class="btn-success btn button1 submit">	 SUBMIT
+					<button href="#" class="btn-success btn button1 previous">
+						< PREVIOUS
 					</button>
+					<button href="#" class="btn-success btn button1 next">
+						NEXT >
+					</button>
+					<button href="#" class="btn-success btn button1 submit">
+						RECORD RESPONSE
+					</button>
+					<span class"msg" style="color:black"></span>
 				</div>	
 			</div>
 		</question>
@@ -88,4 +97,10 @@
 	</div>
 </div>  -->
 </body>
+<script>
+	function selectQue(){
+		console.log(this.id);
+	};
+	window.onbeforeunload = function () {return false;}
+</script>
 </html>

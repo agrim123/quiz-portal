@@ -14,7 +14,7 @@ CREATE TABLE "session" (
 	"sid" varchar NOT NULL COLLATE "default",
 	"sess" json NOT NULL,
 	"expire" timestamp(6) NOT NULL
-)
+);
 CREATE TABLE quiz_status (
 	open boolean default FALSE
 );
@@ -22,19 +22,14 @@ WITH (OIDS=FALSE);
 ALTER TABLE "session" ADD CONSTRAINT "session_pkey" PRIMARY KEY ("sid") NOT DEFERRABLE INITIALLY IMMEDIATE;
 CREATE TABLE users(	
 	id SERIAL PRIMARY KEY,
-	oauth_provider varchar(50),
-	first_name varchar(50),
-	last_name varchar(50),
-	email varchar(100),
-	gender varchar(5),
-	picture varchar(255),
-	score INT default 0,
+	username varchar(50),
 	created_on timestamp default current_timestamp
  );
 CREATE TABLE map_users(	
 	user_id INT,
 	question_id INT,
 	solved boolean default FALSE,
+	login_time BIGINT,
 	FOREIGN KEY (user_id) REFERENCES users(id),
 	FOREIGN KEY (question_id) REFERENCES question(id)
 );

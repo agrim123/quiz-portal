@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "watch": "nodemon ./bin/www"
   },
   "dependencies": {
     "blueimp-file-upload": "^9.14.2",
@@ -26,9 +27,10 @@
     "multer-storage-cloudinary": "^2.2.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "pg": "^6.1.2",
+    "pg": "^6.4.2",
     "pg-native": "^1.10.0",
     "pg-promise": "^5.5.1",
+    "request": "^2.83.0",
     "rmdir": "^1.2.0",
     "serve-favicon": "~2.3.0"
   }
