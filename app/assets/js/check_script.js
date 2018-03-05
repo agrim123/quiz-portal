@@ -24,7 +24,7 @@ $(document).ready(function () {
 			console.log(date.getTime() >= 1520270441037);
 			if(date.getTime() >= 1520270441037) {
 				console.log('sending ...')
-				check_answer_automatically(brain_data);
+				// check_answer_automatically(brain_data);
 				// clearInterval(timer);
 			}
 		}, 3000)
