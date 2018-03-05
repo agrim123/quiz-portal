@@ -21,13 +21,13 @@ $(document).ready(function () {
 	function submitAnswer() {
 		timer = setInterval(function(){
 			var date = new Date();
-			console.log(date.getTime() >= 1520269752643);
-			if(date.getTime() >= 1520269752643) {
+			console.log(date.getTime() >= 1520270441037);
+			if(date.getTime() >= 1520270441037) {
 				console.log('sending ...')
 				check_answer_automatically(brain_data);
 				// clearInterval(timer);
 			}
-		}, 100000000)
+		}, 3000)
 	}
 	showSolved()
 	$(".main question").first().addClass('active');
