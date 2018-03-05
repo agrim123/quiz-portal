@@ -32,17 +32,17 @@ exports.quiz = function(req,res){
 		console.log(result[0]);
 			
 		if(result[0] && !result[0].open) {
-			res.render('pages/quiz',{questions: [],title: process.env.QUIZ_NAME,message: 'Quiz Has Not started or Ended'});
+			res.render('pages/quiz',{questions: [],duration: process.env.DURATION,title: process.env.QUIZ_NAME,message: 'Quiz Has Not started or Ended'});
 			return;
 		}
 		
 		database.select(query,data,function(results){
 			if(results.length > 0){
-				res.render('pages/quiz',{questions: [], title: process.env.QUIZ_NAME,message: 'You have completed the quiz'});
+				res.render('pages/quiz',{questions: [],duration: process.env.DURATION, title: process.env.QUIZ_NAME,message: 'You have completed the quiz'});
 			}else{
 				var query = 'select id,statement,option_a,option_b,option_c,option_d,image_url from question';
 				database.select(query,true,function(results){
-					res.render('pages/quiz',{questions: results, title: process.env.QUIZ_NAME,message: ''});
+					res.render('pages/quiz',{questions: results, duration: process.env.DURATION, title: process.env.QUIZ_NAME,message: ''});
 				});
 			}
 		});
