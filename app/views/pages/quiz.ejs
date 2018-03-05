@@ -105,8 +105,12 @@
 				</question>
 				<% }); %>
 				<% if(!message) {%>
-				<question id="question" class="last">QUIZ HAS ENDED!
+				<question id="question" class="last">You Have seen all questions!
 						<button type="button" class="btn-primary navabr-btn btn btn-info quit-quiz" >SUBMIT QUIZ</button>
+						<ul class="pager">
+								<li><a class="button1 previous"  href="#">Go Back!</a></li>
+								</ul>
+						<span class"msg" style="color:black"></span>
 				</question>
 				<%}%>
 			</div>

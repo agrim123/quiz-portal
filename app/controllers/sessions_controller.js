@@ -91,7 +91,7 @@ exports.login_user = function(req,res) {
 								return res.status(500).json({success: false, data: err})
 							}
 							const query = client.query('INSERT INTO users(username,created_on,role, score, login_time) values($1, $2,$3,$4, $5) RETURNING id,username',
-								[data.username,data.created_on,'admin',0, data.login_time])
+								[data.username,data.created_on,'user',0, data.login_time])
 							query.on('end', (result) => {
 								const a = result.rows[0]
 								req.session.regenerate(function(){
