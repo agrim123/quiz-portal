@@ -124,7 +124,8 @@ $(document).ready(function () {
 	 //  {
 	 //    check_answer(brain_data);
 	 //  }
-	 $(".quit-quiz").click(function(){
+	 $(".quit-quiz").on('click',function(){
+		console.log('quit');
 	 	check_answer(brain_data);
 	 });
 	 $(".previous").click(function(){

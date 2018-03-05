@@ -6,9 +6,9 @@ var fs = require("fs");
 var posts= {};
 exports.home = function(req,res){
 	if(req.session.user){
-		res.render('pages/home');
+		res.render('pages/home', {title: process.env.QUIZ_NAME});
 	}else{
-		res.render('pages/home');
+		res.render('pages/home', {title: process.env.QUIZ_NAME});
 	}
 }
 
