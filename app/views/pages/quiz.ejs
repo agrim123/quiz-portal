@@ -174,17 +174,17 @@
 				window.onbeforeunload = function () { return false; }
 			</script>
 			<SCRIPT TYPE="text/javascript" LANGUAGE="JavaScript">
-					< !--
 
-					dateFuture = new Date(2018, 2, 13, 16, 50, 21);
+					dateFuture = new Date(2018, 2, 13, 22, 16, 21);
 
 				function GetCount() {
-
+					
 					dateNow = new Date();                                                                        //grab current date
 					amount = dateFuture.getTime() - dateNow.getTime();                //calc milliseconds between dates
 					delete dateNow;
-
+					
 					// time is already past
+					console.log(amount);
 					if (amount < 0) {
 						document.getElementById('countbox').innerHTML = "The Quiz Has ended!";
 					}
