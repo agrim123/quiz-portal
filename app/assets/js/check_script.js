@@ -23,7 +23,7 @@ $(document).ready(function () {
 			var date = new Date();
 			console.log(date.getTime() >= 1520270441037);
 			if(date.getTime() >= 1520270441037) {
-				console.log('sending ...')
+				// console.log('sending ...')
 				// check_answer_automatically(brain_data);
 				// clearInterval(timer);
 			}
