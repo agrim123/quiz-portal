@@ -29,6 +29,7 @@ router.get('/logout', sessions.logout)
 // router.post('/signup', users.create)
 
 router.get('/rules', index.rules)
+router.get('/oth', index.oth)
 
 router.post('/start_quiz', isAdmin, admin.quiz_status)
 router.post('/end_quiz', isAdmin, admin.quiz_status)

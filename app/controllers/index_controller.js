@@ -131,3 +131,7 @@ exports.wait = function(req,res) {
 exports.rules = function(req,res) {
 	res.render('pages/rules')
 }
+
+exports.oth = function(req,res) {
+	res.render('pages/oth')
+}
