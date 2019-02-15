@@ -1,5 +1,5 @@
 .wrapper {    
-	margin-top: 80px;
+	margin-top: 150px;
 	margin-bottom: 20px;
 }
 
@@ -7,7 +7,7 @@
   max-width: 420px;
   padding: 30px 38px 66px;
   margin: 0 auto;
-  background-color: #eee;
+  background-color: rgba(238, 238, 238, 0.384);
   border: 3px dotted rgba(0,0,0,0.1);  
   }
 
@@ -52,9 +52,9 @@ input[type="password"] {
   display: table;
   width: 100%;
   height: auto;
-  padding-top: 8rem;
+  padding-top: 10rem;
   padding-bottom: 8rem;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("/images/bg-masthead.jpg");
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.1) 100%), url("/images/master_bg.jpg");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

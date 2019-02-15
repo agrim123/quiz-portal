@@ -31,13 +31,17 @@ exports.login_user = function(req,res) {
 			method: 'GET'
 		}
 		request(options, function (error, response, body) {
+			console.log(error)
 			if(error || !response) {
 				console.log(error);
 				res.render('pages/login',{
 					msg: "Unknown error while logging in",
 					title:process.env.QUIZ_NAME, 
 					oth: false})
+				return
+
 				}
+				console.log(response)
 			let { message } = response.body
 			let status = response.statusCode
 			if (status === 200) {
@@ -59,7 +63,7 @@ exports.login_user = function(req,res) {
 			id: cogniId,
 		}
 		var options = {
-			url: `${process.env.API_DOMAIN}api/checkCogniIdandHash`,
+			url: `${process.env.API_DOMAIN}api/g/checkCogniIdandHash`,
 			method: 'POST',
 			form: body,
 		}

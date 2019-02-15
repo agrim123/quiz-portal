@@ -6,9 +6,7 @@
     "start": "forever start --minUptime 1000 --spinSleepTime 1000 ./bin/www",
     "stop": "forever stop ./bin/www",
     "restart": "forever restart ./bin/www",
-    "watch": "nodemon ./bin/www",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "watch": "nodemon ./bin/www"
   },
   "dependencies": {
     "blueimp-file-upload": "^9.14.2",
